@@ -10,4 +10,5 @@ class UserQueriesController < ApplicationController
 
   def index
   end
+
 end
