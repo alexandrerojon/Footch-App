@@ -23,7 +23,7 @@ class UserQueriesController < ApplicationController
         )
       @user_query.recipes << recipe
     end
-    redirect_to user_query
+    redirect_to user_queries
   end
 
   def show
