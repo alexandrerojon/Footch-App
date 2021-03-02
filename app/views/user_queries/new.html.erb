@@ -1,3 +1,22 @@
-<h1>UserQueries#new</h1>
-<p>Find me in app/views/user_queries/new.html.erb</p>
+<h1>Hello! Welcome to Footch!</h1>
+
+
+<br>
+<br>
+<br>
+
+<%= simple_form_for(:query, url: user_queries_path) do |f| %>
+
+
+<h4> Please submit your ingredients, seperated by comma's. </h4>
+<p><small> Example: egg, milk, bacon </small></p>
+
+  <%= f.input :ingredients %>
+
+  <%= f.input :diet, collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]%>
+
+
+<%= f.button :submit, "Submit" %>
+
+<% end %>
 
