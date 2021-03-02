@@ -10,8 +10,6 @@ class UserQueriesController < ApplicationController
          includeIngredients: params.dig(:query, :ingredients), number: 10, diet: params.dig(:query, :diet)}
       }
     recipes = JSON.parse(response.body)
-    raise
-
     @user_query = UserQuery.new
     @user_query.user = current_user
     @user_query.name = "query name"

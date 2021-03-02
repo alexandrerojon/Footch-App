@@ -8,10 +8,10 @@
 <%= simple_form_for(:query, url: user_queries_path) do |f| %>
 
 
-<h4> Please submit your ingredients, seperated by comma's. </h4>
+<h4> Please submit your ingredients below:  </h4>
 <p><small> Example: egg, milk, bacon </small></p>
 
-  <%= f.input :ingredients %>
+  <%= f.input :ingredients, as: :select, input_html: { multiple: true, class: 'select2' } %>
 
   <%= f.input :diet, collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]%>
 
