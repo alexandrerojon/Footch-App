@@ -1,0 +1,37 @@
+<h1>Welcome to your cookbook</h1>
+
+
+<%= form_tag cookbooks_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find your recipe"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<div class="recipes_list">
+  <% @recipes.each do |recipe| %>
+  <div class="cookbook_recipe_card">
+    <div class="image_mini">
+      <%= image_tag recipe.ingredients["image"] %>
+    </div>
+    <div class="name">
+      <%= recipe.name %>
+    </div>
+    <div class="info">
+      <%= recipe.ingredients["readyInMinutes"]%>min
+    </div>
+    <div class="info">
+      <%= recipe.ingredients["servings"]%>.prs
+    </div>
+    <div class="info">
+      <%= recipe.ingredients["creditsText"] %>
+    </div>
+  </div>
+
+  <% end %>
+
+</div>
+
