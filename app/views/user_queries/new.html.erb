@@ -1,22 +1,22 @@
-<h1>Hello! Welcome to Footch!</h1>
+<div class="card">
+  <div class="card-header">
+    <h1>Hello! Welcome to Footch!</h1>
+  </div>
 
+  <div class="card-body">
+    <h4 class="card-title"> Please submit your ingredients below:  </h4>
+      <%= simple_form_for(:query, url: user_queries_path) do |f| %>
 
-<br>
-<br>
-<br>
-
-<%= simple_form_for(:query, url: user_queries_path) do |f| %>
-
-
-<h4> Please submit your ingredients, seperated by comma's. </h4>
-<p><small> Example: egg, milk, bacon </small></p>
-
-  <%= f.input :ingredients %>
-
-  <%= f.input :diet, collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]%>
-
-
-<%= f.button :submit, "Submit" %>
-
-<% end %>
-
+        <br>
+        <p class="card-text">
+        <%= f.input :ingredients, collection: ["Tomatoes", "Eggs", "Mushrooms"], as: :select, input_html: { multiple: true, class: 'select2' } %>
+        </p>
+        <small> Example: egg, milk, bacon </small>
+        <br>
+        <br>
+        <br>
+        <%= f.input :diet, collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]%>
+        <button type="button" class="btn btn-primary"><%= f.button :submit, "Submit" %></button>
+      <% end %>
+  </div>
+</div>

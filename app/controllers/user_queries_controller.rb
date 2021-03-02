@@ -24,7 +24,9 @@ class UserQueriesController < ApplicationController
         )
       @user_query.recipes << recipe
     end
+
     redirect_to user_query_path(@user_query)
+
   end
 
   def show
