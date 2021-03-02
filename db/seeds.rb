@@ -4,18 +4,26 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
+#   Character.create(name: 'Luke', movie: movies.first)
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
 #   Character.create(name: 'Luke', movie: movie)
 Cookbook.destroy_all
 Recipe.destroy_all
 User.destroy_all
 
 
-
-
-
-
-
-user = User.create!(email:"alpha@bata.com", password: "654321")
+users = User.create!([{email: "allison@gmail.com", password: "123456"},
+{email: "arthur@gmail.com", password: "123456"},
+{email: "alexandre@gmail.com", password: "123456"},
+{email: "sebastien@gmail.com", password: "123456"}])
 
 ingredient = {
     "id": 716429,
@@ -671,6 +679,7 @@ instructions = [
 
 recipe = Recipe.create!(name: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs", api_id: 716429, ingredients: ingredient, instructions: instructions)
 
-cookbook = Cookbook.create!(user: user, recipe: recipe)
+user_query = UserQuery.create!(name: "Restaurant Flamand", user: users.first)
+user_query.recipes << recipe
 
-
+cookbook = Cookbook.create!(user: users.first, recipe: recipe)
