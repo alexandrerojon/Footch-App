@@ -4,10 +4,13 @@ class UserQueriesController < ApplicationController
   end
 
   def create
-    response = RestClient.get 'https://api.spoonacular.com/recipes/complexSearch',
+    ingredients = params.dig(:query, :ingredients)
+    ingredients.delete_at(0)
+    query = {
+      query: ingredients, number: 10, diet: params.dig(:query, :diet)}.to_query
+    response = RestClient.get "https://api.spoonacular.com/recipes/complexSearch?#{query}",
       {
-        params: {"apiKey" => ENV["API_KEY_SPOON"], addRecipeInformation: true,
-         includeIngredients: params.dig(:query, :ingredients), number: 10, diet: params.dig(:query, :diet)}
+        params: {"apiKey" => ENV["API_KEY_SPOON"]}
       }
     recipes = JSON.parse(response.body)
     @user_query = UserQuery.new
