@@ -4,23 +4,15 @@
 
 
 
+<%= simple_form_for(:query, url: user_queries_path) do |f| %>
 
-<%= simple_form_for(@things) do |f| %>
-
-
-
-<%= f.input %> ingredients
-
-<%=  %> number of people
 
 
 ----------------------------------------------------
 
 
-<%=  %> dietary preferences
+<%= f.input :diet, collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]  %> dietary preferences
 
-
-<%=  %> extra ingredients
 
 
 
