@@ -4,6 +4,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -12,22 +13,17 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+
 #   Character.create(name: 'Luke', movie: movie)
 Cookbook.destroy_all
 Recipe.destroy_all
 User.destroy_all
 
 
-
-
-
-
-
 users = User.create!([{email: "allison@gmail.com", password: "123456"},
 {email: "arthur@gmail.com", password: "123456"},
 {email: "alexandre@gmail.com", password: "123456"},
 {email: "sebastien@gmail.com", password: "123456"}])
-
 
 ingredient = {
     "id": 716429,
@@ -682,9 +678,8 @@ instructions = [
 ]
 
 recipe = Recipe.create!(name: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs", api_id: 716429, ingredients: ingredient, instructions: instructions)
+
 user_query = UserQuery.create!(name: "Restaurant Flamand", user: users.first)
 user_query.recipes << recipe
 
 cookbook = Cookbook.create!(user: users.first, recipe: recipe)
-
-
