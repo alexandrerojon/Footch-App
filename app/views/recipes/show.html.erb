@@ -1,2 +1,24 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+
+<h1><%= @recipe.name %></h1>
+<%= image_tag @recipe.image %>
+<p><strong><%= @recipe.serving %></strong></p>
+<p><strong><%= @recipe.min %></strong></p>
+<% if @recipe.diet == [] %>
+<p>diet none</p>
+<% else %>
+<%= @recipe.diet %>
+<% end %>
+
+<h3>Ingredients</h3>
+<ul>
+  <% @recipe.ingredients_list.each do |ingredient| %>
+  <li><%= ingredient %></li>
+  <% end %>
+</ul>
+<h3>Instructions</h3>
+<ol>
+  <% @recipe.steps.each do |step| %>
+  <li><%= step %></li>
+  <% end %>
+</ol>
+
