@@ -1,2 +1,18 @@
-<h1>UserQueries#show</h1>
-<p>Find me in app/views/user_queries/show.html.erb</p>
+
+<h1> List of users's recipes </h1>
+
+<%  @user_query.recipes.each do |recipe| %>
+
+<%= recipe.ingredients["title"] %>
+<br>
+<%= image_tag recipe.ingredients["image"] %>
+<br>
+<%= recipe.ingredients["readyInMinutes"] %> mins
+<br>
+<%= recipe.ingredients["summary"].truncate_words(15) %>
+
+<%= link_to "See the recipe in details", recipe_path%>
+
+<br>
+
+<% end %>

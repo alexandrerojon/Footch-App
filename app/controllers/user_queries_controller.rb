@@ -10,13 +10,13 @@ class UserQueriesController < ApplicationController
          includeIngredients: params.dig(:query, :ingredients), number: 1, diet: params.dig(:query, :diet)}
       }
     recipes = JSON.parse(response.body)
-    raise
+ 
   end
 
   def show
+      @user_query = UserQuery.find(params[:id])
   end
 
-  def index
-  end
+
 end
 
