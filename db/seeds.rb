@@ -12,4 +12,3 @@ users = User.create!([{email: "allison@gmail.com", password: "123456"},
   {email: "arthur@gmail.com", password: "123456"},
   {email: "alexandre@gmail.com", password: "123456"},
   {email: "sebastien@gmail.com", password: "123456"}])
-
