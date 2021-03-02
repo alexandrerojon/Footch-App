@@ -11,6 +11,13 @@ class UserQueriesController < ApplicationController
       }
     recipes = JSON.parse(response.body)
 
+ 
+  end
+
+
+
+
+
     @user_query = UserQuery.new
     @user_query.user = current_user
     @user_query.name = "query name"
@@ -30,11 +37,12 @@ class UserQueriesController < ApplicationController
   end
 
   def show
-
+      @user_query = UserQuery.find(params[:id])
   end
 
   def index
   end
+
 
 end
 
