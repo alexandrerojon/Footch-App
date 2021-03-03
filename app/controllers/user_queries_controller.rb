@@ -1,13 +1,11 @@
 class UserQueriesController < ApplicationController
 
-
-
   def new
   end
 
   def create
     query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{params.dig(:query, :ingredients
-      ).join(",")}&diet=#{params.dig(:query,:diet)}"
+      ).join(",")}&diet=#{params.dig(:query, :diet)}"
     response = RestClient.get "https://api.spoonacular.com/recipes/complexSearch?#{query_string}",
       {
         params: {"apiKey" => ENV["API_KEY_SPOON"] }
