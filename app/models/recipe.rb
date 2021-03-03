@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :cookbooks, dependent: :destroy
   has_many :query_recipes, dependent: :destroy
   has_many :users, through: :cookbooks
+  validates :name, presence: true
 
 
   include PgSearch::Model
@@ -42,7 +43,9 @@ class Recipe < ApplicationRecord
   def ingredients_list
     ingredients = []
     self.instructions[0]["steps"].each do |step|
-      step["ingredients"].each do |ingredient|
+      p step
+      step["ingredients"]&.each do |ingredient|
+        p ingredient
         ingredients << ingredient["name"]
       end
     end
