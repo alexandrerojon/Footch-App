@@ -11,11 +11,11 @@ class CookbooksController < ApplicationController
   end
 
   def index
-if params[:query].present?
-@recipes = current_user.recipes.search_by_name(params[:query])
-else
-    @recipes = Recipe.all
-end
+    if params[:query].present?
+      @recipes = current_user.recipes.search_by_name(params[:query])
+    else
+      @recipes = current_user.recipes
+    end
   end
 
   def destroy
