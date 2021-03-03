@@ -48,4 +48,9 @@ class Recipe < ApplicationRecord
     end
     return ingredients.uniq
   end
+
+  def summary
+    self.ingredients["summary"].truncate_words(20).gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"")
+
+  end 
 end
