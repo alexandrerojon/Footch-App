@@ -15,19 +15,19 @@
   <% @recipes.each do |recipe| %>
   <div class="cookbook_recipe_card">
     <div class="image_mini">
-      <%= image_tag recipe.ingredients["image"] %>
+      <%= image_tag image %>
     </div>
     <div class="name">
       <%= recipe.name %>
     </div>
     <div class="info">
-      <%= recipe.ingredients["readyInMinutes"]%>min
+      <%= min %>min
     </div>
     <div class="info">
-      <%= recipe.ingredients["servings"]%>.prs
+      <%= serving %>.prs
     </div>
     <div class="info">
-      <%= recipe.ingredients["creditsText"] %>
+      <%= diet %>
     </div>
   </div>
 
