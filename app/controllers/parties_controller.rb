@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+
   before_action :set_party, only: [:show, :destroy]
 
   def index
@@ -15,8 +16,8 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = Party.new(party_params)
   end
+
 
   def destroy
     @party.destroy
