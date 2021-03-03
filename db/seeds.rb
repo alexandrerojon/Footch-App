@@ -1,6 +1,9 @@
 
-Party.destroy_all
+
 Recipe.destroy_all
+
+Party.destroy_all
+
 User.destroy_all
 
 
