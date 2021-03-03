@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'party_recipe/create'
-  get 'party_recipe/update'
   devise_for :users
   root to: 'user_queries#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -11,13 +9,13 @@ Rails.application.routes.draw do
     resources :cookbooks, only: [ :create ]
   end
   resources :cookbooks, only: [ :index, :destroy ]
-  resources :parties, only: [:index, :new, :create, :show, :destroy] do
+  resources :parties, only: [ :index, :new, :create, :show, :destroy ] do
     resources :user_parties, only: [:create]
-    resources :party_recipes, only: [ :create, :update]
+    resources :party_recipes, only: [ :create, :update ]
   end
 
   resources :user_parties, only: [] do
-    resources :party_ingredients, only: [:new, :create]
+    resources :party_ingredients, only: [ :new, :create ]
   end
-  resources :party_ingredients, only: [:destroy]
+  resources :party_ingredients, only: [ :destroy ]
 end
