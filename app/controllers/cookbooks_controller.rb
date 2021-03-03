@@ -21,7 +21,7 @@ class CookbooksController < ApplicationController
   def destroy
     @cookbook = Cookbook.find(params[:id])
     Cookbook.destroy
-    redirect_to cookbook_path, notice: 'This receipe was succesfully removed.'
+    redirect_to cookbook_path, notice: 'This recipe was succesfully removed.'
   end
 
   private
