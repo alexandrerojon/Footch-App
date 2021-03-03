@@ -1,13 +1,13 @@
 
-
+Party.destroy_all
 Recipe.destroy_all
 User.destroy_all
-Party.destroy_all
 
-users = User.create!([{email: "allison@gmail.com", password: "123456"},
-{email: "arthur@gmail.com", password: "123456"},
-{email: "alexandre@gmail.com", password: "123456"},
-{email: "sebastien@gmail.com", password: "123456"}])
+
+users = User.create!([{email: "allison@gmail.com", username: "allison", password: "123456"},
+{email: "arthur@gmail.com", username: "arthur" , password: "123456"},
+{email: "alexandre@gmail.com", username: "alexandre" , password: "123456"},
+{email: "sebastien@gmail.com", username: "sebastien" , password: "123456"}])
 
 
 ingredient = {
