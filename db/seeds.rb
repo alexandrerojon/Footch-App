@@ -1,7 +1,5 @@
 
-UserQuery.destroy_all
-QueryRecipe.destroy_all
-Cookbook.destroy_all
+
 Recipe.destroy_all
 User.destroy_all
 

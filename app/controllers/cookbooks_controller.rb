@@ -19,7 +19,9 @@ end
   end
 
   def destroy
-    Cookbook.delete
+    @cookbook = Cookbook.find(params[:id])
+    Cookbook.destroy
+    redirect_to cookbook_path, notice: 'This receipe was succesfully removed.'
   end
 
   private
