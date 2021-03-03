@@ -1,27 +1,35 @@
 
 
-
-
 <h1><%= @recipe.name %></h1>
 <%= image_tag @recipe.image %>
 <p><strong><%= @recipe.serving %></strong></p>
 <p><strong><%= @recipe.min %></strong></p>
+<h6>Diet</h6>
 <% if @recipe.diet == [] %>
-<p>diet none</p>
+  <p>Diet: none</p>
 <% else %>
-<%= @recipe.diet %>
+  <% @recipe.diet.each do |diet| %>
+    <%= diet %>
+  <% end %>
 <% end %>
 
 <h3>Ingredients</h3>
 <ul>
   <% @recipe.ingredients_list.each do |ingredient| %>
-  <li><%= ingredient %></li>
+    <li><%= ingredient %></li>
   <% end %>
 </ul>
 <h3>Instructions</h3>
 <ol>
   <% @recipe.steps.each do |step| %>
-  <li><%= step %></li>
+    <li><%= step %></li>
   <% end %>
 </ol>
 
+<% if params[:user_query_id].present? %>
+  <%= link_to'All recipes', user_query_path(params[:user_query_id]) %>
+<% end %>
+
+<%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
+
+<%= link_to 'My cookbook', cookbooks_path %>
