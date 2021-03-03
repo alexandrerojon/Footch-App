@@ -1,8 +1,8 @@
 
 
 Recipe.destroy_all
-User.destroy_all
 Party.destroy_all
+User.destroy_all
 
 users = User.create!([{email: "allison@gmail.com", password: "123456"},
 {email: "arthur@gmail.com", password: "123456"},
