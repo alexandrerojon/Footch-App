@@ -1,5 +1,7 @@
 class UserQueriesController < ApplicationController
 
+
+
   def new
   end
 
@@ -34,6 +36,4 @@ class UserQueriesController < ApplicationController
   def index
   end
 
-
 end
-
