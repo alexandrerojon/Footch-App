@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_134934) do
   end
 
   create_table "party_recipes", force: :cascade do |t|
-    t.boolean "choosen"
+    t.boolean "chosen"
     t.bigint "party_id", null: false
     t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
