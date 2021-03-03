@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :cookbooks, dependent: :destroy
   has_many :query_recipes, dependent: :destroy
   has_many :users, through: :cookbooks
+  has_many :party_recipes, dependent: :destroy
 
 
   include PgSearch::Model
@@ -52,5 +53,5 @@ class Recipe < ApplicationRecord
   def summary
     self.ingredients["summary"].truncate_words(20).gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"")
 
-  end 
+  end
 end

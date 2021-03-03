@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     resources :cookbooks, only: [ :create ]
   end
   resources :cookbooks, only: [ :index, :destroy ]
+  resources :party, only: [:index, :new, :create, :show, :destroy] do
+    resources :user_parties, only: [:create]
+    resources :party_recipes [ :create, :update]
+  end
 
+  resources :user_parties, only: [] do
+    resources :party_ingredients, only: [:new, :create]
+  end
+  resources :party_ingredients, only: [:destroy]
 end

@@ -1,30 +1,28 @@
 
 <h1> List of users's recipes </h1>
- 
-<%  @user_query.recipes.each do |recipe| %>
- <div class="cookbook_recipe_card">
- <div class="name">
-    <%= recipe.name %>
-    </div>
-    <br>  
-    <div class="image_mini">
-        <%= image_tag recipe.image  %>  
-    </div>
-    <br>
-    <div class="info">
-        <%= recipe.min %>
-    </div>
-    <br>
-    <div class="info">
-        <%= recipe.summary %>
-    </div>
 
-    <%= link_to "See the recipe in details", recipe_path(recipe)%>
+<%  @user_query.recipes.each do |recipe| %>
+  <div class="cookbook_recipe_card">
+    <div class="name">
+      <%= recipe.name %>
+    </div>
+    <br>
+    <div class="image_mini">
+      <%= image_tag recipe.image  %>
+    </div>
+    <br>
+    <div class="info">
+      <%= recipe.min %>
+    </div>
+    <br>
+    <div class="info">
+      <%= recipe.summary %>
+    </div>
+    <%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
     <%= link_to "Add to cookbook", cookbooks_path %>
-  </div>  
-    <% end %>
+  </div>
+<% end %>
 <br>
 
 
-<%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
 
