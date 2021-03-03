@@ -11,7 +11,7 @@
 <br>
 <%= recipe.ingredients["summary"].truncate_words(15) %>
 
-<%= link_to "See the recipe in details", recipe_path(recipe)%>
+<%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
 
 <br>
 
