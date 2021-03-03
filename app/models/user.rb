@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :cookbooks
+  has_many :cookbooks, dependent: :destroy
   has_many :recipes, through: :cookbooks
-  has_many :user_queries
+  has_many :user_queries, dependent: :destroy
 
 
 end
