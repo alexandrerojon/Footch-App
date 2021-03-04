@@ -16,9 +16,11 @@ Rails.application.routes.draw do
     resources :party_recipes, only: [ :create, :update ]
 
   end
+    post 'voting', to: 'party_recipes#voting'
 
-  resources :user_parties, only: [] do
+    resources :user_parties, only: [] do
     resources :party_ingredients, only: [ :new, :create ]
   end
   resources :party_ingredients, only: [ :destroy ]
+  resources :party_recipes, only: [ :destroy ]
 end
