@@ -24,15 +24,18 @@ gem 'redis', '~> 4.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+#don't send email and open it into a new tab
+gem 'letter_opener', group: :development
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'acts_as_votable'
 gem 'pg_search', '~> 2.3.0'
 gem 'rest-client'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

@@ -1,7 +1,7 @@
 class PartyRecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_party_recipes, only: [:update]
-  before_action :set_party
+  before_action :set_party_recipes, only: [:update, :voting, :destroy]
+  before_action :set_party, except: [:voting, :destroy]
 
   def create
     query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{ @party.party_ingredients.map{ |ingredient| ingredient.name}.join(",").delete(" ")}"
@@ -13,8 +13,6 @@ class PartyRecipesController < ApplicationController
       }
     recipes = JSON.parse(response.body)
     p recipes
-
-
 
     recipes["results"].each do |recipe_hash|
       recipe = Recipe.create!(
@@ -32,6 +30,16 @@ class PartyRecipesController < ApplicationController
     check_authorized(@party, current_user)
     @party_recipe.update(party_recipe_params)
     redirect_to party_path(@party)
+  end
+
+  def destroy
+    @party_recipe.destroy
+    redirect_to party_path(@party_recipe.party), notice: 'This recipe was succesfully removed.'
+  end
+
+  def voting
+    @party_recipe.liked_by current_user
+    redirect_to party_path(@party_recipe.party)
   end
 
   private
