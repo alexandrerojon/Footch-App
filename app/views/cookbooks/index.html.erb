@@ -13,30 +13,31 @@ class: "form-control",
 
   <div class="recipes_list">
     <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe) do %>
-    <div class="cookbook_recipe_card">
-      <div class="image_mini">
-        <%= image_tag recipe.image %>
+      <%= link_to recipe_path(recipe) do %>
+      <div class="cookbook_recipe_card">
+        <div class="image_mini">
+          <%= image_tag recipe.image %>
+        </div>
+        <div class="name">
+          <%= recipe.name %>
+        </div>
+        <div class="info">
+          <%= recipe.min %>min
+        </div>
+        <div class="info">
+          <%= recipe.serving %>.prs
+        </div>
+        <div class="info">
+          <%= recipe.diet %>
+        </div>
+        <div class="button_card">
+          <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-      <div class="name">
-        <%= recipe.name %>
-      </div>
-      <div class="info">
-        <%= recipe.min %>min
-      </div>
-      <div class="info">
-        <%= recipe.serving %>.prs
-      </div>
-      <div class="info">
-        <%= recipe.diet %>
-      </div>
-      <div class="button_card">
-        <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    </div>
+      <% end %>
     <% end %>
-
-    <% end %>
-
   </div>
 
+<div>
+  <h3> <button type="button" class="btn btn-primary"> <%= link_to "Start a party!", new_party_path %> </h3> </button>
+</div>

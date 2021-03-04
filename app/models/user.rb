@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
- 
 
+  validates :username, uniqueness: true
   has_many :cookbooks, dependent: :destroy
   has_many :recipes, through: :cookbooks
   has_many :user_queries, dependent: :destroy
