@@ -1,0 +1,15 @@
+
+<h1>Party#show</h1>
+<p>Find me in app/views/party/show.html.erb</p>
+
+<%= simple_form_for [@user_party, @party_ingredient] do |f| %>
+<%= f.input :name %>
+<%= f.submit  %>
+<% end %>
+
+<% @party.user_parties.each do |user_party| %>
+  <%= user_party.user.username %>
+  <% user_party.party_ingredients.each do |party_ingredient| %>
+  <%= party_ingredient.name %>
+  <% end %>
+<% end %>
