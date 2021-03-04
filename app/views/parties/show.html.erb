@@ -37,13 +37,6 @@
     </div>
       <div class="card">
         <div class="user-add">
-<<<<<<< HEAD
-          <h3> Add some friends to the party</h3>
-            <%= simple_form_for([@party, @new_user_party]) do |f| %>
-            <p> find your friend by their username below </p>
-            <%= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
-            <%= f.submit "add friend", class: "btn btn-primary"%>
-=======
           <h3> Party Friends</h3>
              <% if check_authorized_user(@party, current_user) %>
               <%= simple_form_for([@party, @new_user_party]) do |f| %>
@@ -51,7 +44,6 @@
               <%= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
               <%= f.submit "add friend", class: "btn btn-primary" %>
               <% end %>
->>>>>>> master
             <% end %>
         </div>
         <div class="user-display">
@@ -69,7 +61,7 @@
       <% @party.party_recipes.each do |party_recipe| %>
       <% recipe = party_recipe.recipe %>
         <%= link_to recipe_path(recipe) do %>
-          <div class="cookbook_recipe_card">
+          <div class="card cookbook_recipe_card">
             <div class="image_mini">
               <%= image_tag recipe.image %>
             </div>
@@ -83,7 +75,9 @@
               <%= recipe.serving %>.prs
             </div>
             <div class="info">
-              <%= recipe.diet %>
+              <% recipe.diet.each do |diet| %>
+               <%= diet %>
+              <% end %>
             </div>
             <div class="vote_up">
               <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post%>
