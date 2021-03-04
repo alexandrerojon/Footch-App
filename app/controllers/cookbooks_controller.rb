@@ -1,13 +1,11 @@
 class CookbooksController < ApplicationController
 
-
   def create
     @cookbook = Cookbook.new
     @cookbook.user_id = current_user[:id]
     @cookbook.recipe_id = params[:recipe_id]
     @cookbook.save!
     redirect_to cookbooks_path, notice: "The recipe was added to your cookbook!"
-
   end
 
   def index
@@ -19,9 +17,9 @@ class CookbooksController < ApplicationController
   end
 
   def destroy
-    @cookbook = Cookbook.find(params[:id])
-    Cookbook.destroy
-    redirect_to cookbook_path, notice: 'This recipe was succesfully removed.'
+    @cookbook = current_user.cookbooks.find_by(recipe_id: params[:id])
+    @cookbook.destroy
+    redirect_to cookbooks_path, notice: 'This recipe was succesfully removed.'
   end
 
   private
@@ -29,5 +27,4 @@ class CookbooksController < ApplicationController
   def cookbook_params
     params.require(:cookbook).permit(:current_user, :recipe_id)
   end
-
 end
