@@ -6,6 +6,7 @@ class PartiesController < ApplicationController
   end
 
   def show
+    @new_user_party = UserParty.new
     @party_ingredient = PartyIngredient.new
     @user_party = UserParty.find_by(user: current_user, party: @party)
   end
@@ -26,7 +27,9 @@ class PartiesController < ApplicationController
   end
 
   def destroy
+    @party = Party.find(params[:id])
     @party.destroy
+    redirect_to parties_path, notice: 'This party was succesfully deleted.'
   end
 
   private

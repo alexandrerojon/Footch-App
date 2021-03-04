@@ -19,3 +19,33 @@
     <% end %>
   </div>
 </div>
+
+<div class="party-show">
+  <%= @party.name  %>
+  <%= @party.date %>
+</div>
+
+<div class="party-friends">
+  <% @party.user_parties.each do |user_parties| %>
+    <%= user_parties.user.username %>
+  <% end %>
+</div>
+
+
+<div class="user-add">
+  <h3> Please select who you would like to add to your party:</h3>
+    <%= simple_form_for([@party, @new_user_party]) do |f| %>
+    <p> Please add user's one by one. </p>
+    <%=  f.input :user_id, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
+    <%= f.submit %>
+    <% end %>
+</div>
+
+<%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% @party.user_parties.each do |user_party| %>
+  <%= user_party.user.username %>
+  <% user_party.party_ingredients.each do |party_ingredient| %>
+  <%= party_ingredient.name %>
+  <% end %>
+<% end %>
