@@ -16,6 +16,14 @@ class PartiesController < ApplicationController
   end
 
   def create
+    @party = Party.new(party_params)
+    @party.user = current_user
+    
+    if @party.save!
+      redirect_to @party, notice: " Party created"
+    else 
+      render :new
+    end 
   end
 
 
