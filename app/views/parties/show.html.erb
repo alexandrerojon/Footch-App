@@ -7,3 +7,9 @@
 <%= f.submit  %>
 <% end %>
 
+<% @party.user_parties.each do |user_party| %>
+  <%= user_party.user.username %>
+  <% user_party.party_ingredients.each do |party_ingredient| %>
+  <%= party_ingredient.name %>
+  <% end %>
+<% end %>
