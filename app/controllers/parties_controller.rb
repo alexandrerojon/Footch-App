@@ -1,5 +1,4 @@
 class PartiesController < ApplicationController
-
   before_action :set_party, only: [:show, :destroy]
 
   def index
@@ -17,15 +16,15 @@ class PartiesController < ApplicationController
   end
 
   def create
-     @party = Party.new(party_params)
-     @party.user = current_user
-     if @party.save!
-      redirect_to @party, notice: "Your party has been created!"
+    @party = Party.new(party_params)
+    @party.user = current_user
+    if @party.save!
+      @party.users << current_user
+      redirect_to @party, notice: "Your party has been created"
     else
       render :new
     end
   end
-
 
   def destroy
     @party = Party.find(params[:id])

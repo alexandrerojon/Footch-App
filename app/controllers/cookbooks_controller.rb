@@ -1,13 +1,11 @@
 class CookbooksController < ApplicationController
 
-
   def create
     @cookbook = Cookbook.new
     @cookbook.user_id = current_user[:id]
     @cookbook.recipe_id = params[:recipe_id]
     @cookbook.save!
     redirect_to cookbooks_path, notice: "The recipe was added to your cookbook!"
-
   end
 
   def index
@@ -29,5 +27,4 @@ class CookbooksController < ApplicationController
   def cookbook_params
     params.require(:cookbook).permit(:current_user, :recipe_id)
   end
-
 end
