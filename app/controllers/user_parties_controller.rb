@@ -1,4 +1,5 @@
 class UserPartiesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @user_party = UserParty.new
@@ -9,4 +10,5 @@ class UserPartiesController < ApplicationController
     @user.send_invitation_email
     redirect_to party_path(@user_party.party_id), notice: "Your friend has been added!"
   end
+
 end
