@@ -31,7 +31,7 @@ class: "form-control",
         <%= recipe.diet %>
       </div>
       <div class="button_card">
-        <%= link_to "delete pending", cookbooks_path  %>
+        <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </div>
     <% end %>

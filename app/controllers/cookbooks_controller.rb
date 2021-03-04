@@ -19,9 +19,9 @@ class CookbooksController < ApplicationController
   end
 
   def destroy
-    @cookbook = Cookbook.find(params[:id])
-    Cookbook.destroy
-    redirect_to cookbook_path, notice: 'This recipe was succesfully removed.'
+    @cookbook = current_user.cookbooks.find_by(recipe_id: params[:id])
+    @cookbook.destroy
+    redirect_to cookbooks_path, notice: 'This recipe was succesfully removed.'
   end
 
   private
