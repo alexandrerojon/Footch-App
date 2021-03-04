@@ -9,6 +9,7 @@ class PartiesController < ApplicationController
     @new_user_party = UserParty.new
     @party_ingredient = PartyIngredient.new
     @user_party = UserParty.find_by(user: current_user, party: @party)
+    @message = Message.new
   end
 
   def new

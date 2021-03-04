@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :parties, only: [ :index, :new, :create, :show, :destroy ] do
     resources :user_parties, only: [:create]
     resources :party_recipes, only: [ :create, :update ]
+    resources :messages, only: [:create]
 
   end
 
