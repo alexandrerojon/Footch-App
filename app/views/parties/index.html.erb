@@ -1,4 +1,10 @@
 <h1> Here you can find all your parties <%= current_user.username %> !</h1> 
 
 
+<% @parties.each do |element|  %>
+<%= element.name %>
+<%= element.date %>
+<%= link_to "Show the party", party_path(element) %>
+<br>
+<% end %>
 <%= link_to "Create a party", new_party_path %>

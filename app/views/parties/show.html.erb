@@ -1,11 +1,48 @@
+<div class="card">
+  <h1><%= @party.name %></h1>
 
-<h1>Party#show</h1>
-<p>Find me in app/views/party/show.html.erb</p>
+  <div class="form">
+    <h6 class="card-title"><u>Please submit your ingredients below:</u></h6>
+    <%= simple_form_for [@user_party, @party_ingredient] do |f| %>
+    <%= f.input :name%>
+    <%= f.submit "Submit", class: "btn btn-primary"  %>
+    <% end %>
+  </div>
+  <br>
+  <div class="ingredients-per-user">
+    <h6><strong><u>Here's what your friends have:</u></strong></h6>
+    <% @party.user_parties.each do |user_party| %>
+      <strong><%= user_party.user.username %>:</strong>
+      <% user_party.party_ingredients.each do |party_ingredient| %>
+      <%= party_ingredient.name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<%= simple_form_for [@user_party, @party_ingredient] do |f| %>
-<%= f.input :name %>
-<%= f.submit  %>
-<% end %>
+<div class="party-show">
+  <%= @party.name  %>
+  <%= @party.date %>
+</div>
+
+<div class="party-friends">
+  <% @party.user_parties.each do |user_parties| %>
+    <%= user_parties.user.username %>
+  <% end %>
+</div>
+
+
+<div class="user-add">
+  <h3> Please select who you would like to add to your party:</h3>
+    <%= simple_form_for([@party, @new_user_party]) do |f| %>
+    <p> Please add user's one by one. </p>
+    <%=  f.input :user_id, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
+    <%= f.submit %>
+    <% end %>
+</div>
+
+<%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
+
 
 <% @party.user_parties.each do |user_party| %>
   <%= user_party.user.username %>
@@ -42,8 +79,5 @@
   </div>
   <% end %>
   <% end %>
-
 </div>
-
-
 
