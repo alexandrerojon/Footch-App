@@ -16,7 +16,7 @@ class PartiesController < ApplicationController
 
   def create
     @party = Party.new(party_params)
-    
+    @party.user = current_user
 
     if @party.save!
       @party.users << current_user
