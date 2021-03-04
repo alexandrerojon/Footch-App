@@ -1,92 +1,93 @@
-<div class="card">
-  <h1><%= @party.name %></h1>
-
-  <div class="form">
-    <h6 class="card-title"><u>Please submit your ingredients below:</u></h6>
-    <%= simple_form_for [@user_party, @party_ingredient] do |f| %>
-    <%= f.input :name%>
-    <%= f.submit "Submit", class: "btn btn-primary"  %>
-    <% end %>
-  </div>
-  <br>
-  <div class="ingredients-per-user">
-    <h6><strong><u>Here's what your friends have:</u></strong></h6>
-    <% @party.user_parties.each do |user_party| %>
-      <strong><%= user_party.user.username %>:</strong>
-      <% user_party.party_ingredients.each do |party_ingredient| %>
-      <%= party_ingredient.name %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="party-show">
-  <%= @party.name  %>
-  <%= @party.date %>
-</div>
-
-<div class="party-friends">
-  <% @party.user_parties.each do |user_parties| %>
-    <%= user_parties.user.username %>
-  <% end %>
-</div>
-
-
-<div class="user-add">
-  <h3> Please select who you would like to add to your party:</h3>
-    <%= simple_form_for([@party, @new_user_party]) do |f| %>
-    <p> Please add user's one by one. </p>
-    <%=  f.input :user_id, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
-    <%= f.submit %>
+<div class="party-page-buttons">
+  <% if check_authorized_user(@party, current_user) %>
+    <h5><%= link_to "Check the recipes", party_party_recipes_path(@party), method: :post %></h5>
+    <h5><%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %></h5>
     <% end %>
 </div>
 
-<%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="page-party">
+  <div class="card-party">
+    <div class="card">
+      <div class="party-show">
+        <h1><%= @party.name %></h1>
+        <h4><%= @party.date %></h4>
+        <p> by : <%= @party.user.username %></p>
+      </div>
+      <div class="ingredients-per-user">
+        <h6><strong><u>Who is bringing what?:</u></strong></h6>
+        <% @party.user_parties.each do |user_party| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong><%= user_party.user.username %> : </strong>
+            <% user_party.party_ingredients.each do |party_ingredient| %>
+            <%= party_ingredient.name %>
+          <% end %>
+          </li>
+         </ul>
+        <% end %>
+      </div>
+      <div class="form">
+        <h6 class="card-title"><u>Tell us what ingredients you're bringing below:</u></h6>
+        <%= simple_form_for [@user_party, @party_ingredient] do |f| %>
+        <%= f.input :name, label: false %>
+        <%= f.submit "add", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <br>
+    </div>
+      <div class="card">
+        <div class="user-add">
+          <h3> Party Friends</h3>
+             <% if check_authorized_user(@party, current_user) %>
+              <%= simple_form_for([@party, @new_user_party]) do |f| %>
+              <p> find your friend by their username below </p>
+              <%= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
+              <%= f.submit "add friend", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="user-display">
+          <h5> Who will be there?</h5>
+        <% @party.user_parties.each do |user_party| %>
+          <%= user_party.user.username %>
+        <% end %>
+        </div>
+      </div>
+    </div>
 
 
-<% @party.user_parties.each do |user_party| %>
-  <%= user_party.user.username %>
-  <% user_party.party_ingredients.each do |party_ingredient| %>
-  <%= party_ingredient.name %>
-  <% end %>
-<% end %>
-
-<%= link_to "Check the recipes", party_party_recipes_path(@party), method: :post %>
-
-
-<div class="recipes_list">
-  <% @party.party_recipes.each do |party_recipe| %>
-  <% recipe = party_recipe.recipe %>
-  <%= link_to recipe_path(recipe) do %>
-  <div class="cookbook_recipe_card">
-    <div class="image_mini">
-      <%= image_tag recipe.image %>
-    </div>
-    <div class="name">
-      <%= recipe.name %>
-    </div>
-    <div class="info">
-      <%= recipe.min %>min
-    </div>
-    <div class="info">
-      <%= recipe.serving %>.prs
-    </div>
-    <div class="info">
-      <% recipe.diet.each do |diet| %>
-      <%= diet %>
-      <% end %>
-    </div>
-    <div class="vote_up">
-      <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post%>
-    </div>
-    <div class="button_card">
-      <%= link_to 'Delete this recipe', party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-    <div class="vote_num">
-      <%= party_recipe.votes_for.size %>
-    </div>
+  <div class="card-party">
+  <div class="recipes_list">
+    <% @party.party_recipes.each do |party_recipe| %>
+      <% recipe = party_recipe.recipe %>
+        <%= link_to recipe_path(recipe) do %>
+          <div class="cookbook_recipe_card">
+                <div class="image_mini">
+                  <%= image_tag recipe.image %>
+                </div>
+                <div class="name">
+                  <%= recipe.name %>
+                </div>
+                <div class="info">
+                  <%= recipe.min %>min
+                </div>
+                <div class="info">
+                  <%= recipe.serving %>.prs
+                </div>
+                <div class="info">
+                  <%= recipe.diet %>
+                </div>
+                <div class="vote_up">
+                  <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post%>
+                </div>
+                <div class="vote_num">
+                  <%= party_recipe.votes_for.size %>
+                <div class="button_card">
+                  <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </div>
+          <% end %>
+        <% end %>
+      </div>
   </div>
-  <% end %>
-  <% end %>
 </div>
-
