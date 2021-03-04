@@ -14,6 +14,6 @@ class User < ApplicationRecord
 
 
 def send_invitation_email
-  UserMailer.with(user: user).invitation.deliver_now
+  UsermailerMailer.with(user: self).invitation.deliver_now
 end
 end
