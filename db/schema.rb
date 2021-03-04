@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_143443) do
+ActiveRecord::Schema.define(version: 2021_03_04_152714) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_03_04_143443) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_cookbooks_on_recipe_id"
     t.index ["user_id"], name: "index_cookbooks_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "party_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_id"], name: "index_messages_on_party_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -117,6 +128,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_143443) do
 
   add_foreign_key "cookbooks", "recipes"
   add_foreign_key "cookbooks", "users"
+  add_foreign_key "messages", "parties"
+  add_foreign_key "messages", "users"
   add_foreign_key "parties", "users"
   add_foreign_key "party_ingredients", "user_parties"
   add_foreign_key "party_recipes", "parties"

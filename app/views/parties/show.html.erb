@@ -93,3 +93,19 @@
     <% end %>
   </div>
 </div>
+
+  
+  
+<div class="chatbox">
+  <div id="messages" data-party-id="<%= @party.id %>">
+    <% @party.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [ @party, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@party.name}" %>
+    <%= f.submit "Send", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
