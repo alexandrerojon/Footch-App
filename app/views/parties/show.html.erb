@@ -55,7 +55,8 @@
 
 
 <div class="recipes_list">
-  <% @party.recipes.each do |recipe| %>
+  <% @party.party_recipes.each do |party_recipe| %>
+  <% recipe = party_recipe.recipe %>
   <%= link_to recipe_path(recipe) do %>
   <div class="cookbook_recipe_card">
     <div class="image_mini">
@@ -71,10 +72,18 @@
       <%= recipe.serving %>.prs
     </div>
     <div class="info">
-      <%= recipe.diet %>
+      <% recipe.diet.each do |diet| %>
+      <%= diet %>
+      <% end %>
+    </div>
+    <div class="vote_up">
+      <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post%>
     </div>
     <div class="button_card">
-      <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete this recipe', party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="vote_num">
+      <%= party_recipe.votes_for.size %>
     </div>
   </div>
   <% end %>
