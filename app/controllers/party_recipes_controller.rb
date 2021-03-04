@@ -4,12 +4,15 @@ class PartyRecipesController < ApplicationController
   before_action :set_party
 
   def create
-    query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{ party.party_ingredients.map{ |ingredient| ingredient.name}.join(",")}"
+    query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{ @party.party_ingredients.map{ |ingredient| ingredient.name}.join(",").delete(" ")}"
+    p query_string
+
     response = RestClient.get "https://api.spoonacular.com/recipes/complexSearch?#{query_string}",
       {
         params: {"apiKey" => ENV["API_KEY_SPOON"] }
       }
     recipes = JSON.parse(response.body)
+    p recipes
 
 
 
