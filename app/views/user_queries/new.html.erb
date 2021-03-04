@@ -21,8 +21,9 @@
   </div>
 </div>
 
-<%= link_to "cookbook", cookbooks_path %>
-<%= link_to "Create a party", new_party_path %>
-<%= link_to  "Index of parties", parties_path %>
 
-
+  <div class="homepage-buttons">
+    <h3> <button type="button" class="btn btn-primary">  <%= link_to "cookbook", cookbooks_path %></button></h3>
+    <h3> <button type="button" class="btn btn-primary"> <%= link_to "start a party!", new_party_path %></button></h3>
+    <h3> <button type="button" class="btn btn-primary">  <%= link_to  "see all your parties", parties_path %></button></h3>
+  </div>
