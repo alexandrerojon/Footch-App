@@ -5,5 +5,5 @@ class Party < ApplicationRecord
   has_many :party_recipes
   has_many :recipes, through: :party_recipes
   has_many :users, through: :user_parties
-  has_many :messages
+  has_many :messages, dependent: :destroy
 end
