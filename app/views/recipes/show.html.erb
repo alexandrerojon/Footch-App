@@ -1,7 +1,11 @@
 
 
 <h1><%= @recipe.name %></h1>
-<%= image_tag @recipe.image %>
+<% if @recipe.picture.attached? %>
+  <%=  cl_image_tag @recipe.picture.key %>
+<% else %>
+  <%= image_tag @recipe.image %>
+<% end %>
 <p><strong><%= @recipe.serving %></strong></p>
 <p><strong><%= @recipe.min %></strong></p>
 <h6>Diet</h6>

@@ -1,11 +1,11 @@
-<h1>Usermailer#invitation</h1>
+<h1>Join the party !</h1>
 
 <p>
  <p> Hi <%= @user.username %></p>
- <p>  You have been added to the @party.name !
- <p> Go on Feetch to see who is in the party and which ingredients you can add for the party ! </p>
+ <%= "You have been added to the party named : #{@party.name} !" %>  
+ <p> Go on Footch to see who is in the party and which ingredients you can add for the party ! </p>
  
 
- <p> Feetch's team</p>
+ <p> Footch's team</p>
  <%= link_to " Go on the website", root_url %>
 </p>
