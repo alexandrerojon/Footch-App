@@ -20,17 +20,18 @@
           <li class="list-group-item">
             <strong><%= user_party.user.username %> : </strong>
             <% user_party.party_ingredients.each do |party_ingredient| %>
-            <%= party_ingredient.name %>
-          <% end %>
+              <%= party_ingredient.name %>
+              <%= link_to "delete ingredient", party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+            <% end %>
           </li>
          </ul>
         <% end %>
       </div>
       <div class="form">
         <h6 class="card-title"><u>Tell us what ingredients you're bringing below:</u></h6>
-        <%= simple_form_for [@user_party, @party_ingredient] do |f| %>
-        <%= f.input :name, label: false %>
-        <%= f.submit "add", class: "btn btn-primary" %>
+        <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
+          <%= f.input :name, label: false %>
+          <%= f.submit "add", class: "btn btn-primary" %>
         <% end %>
       </div>
       <br>
@@ -38,19 +39,19 @@
       <div class="card">
         <div class="user-add">
           <h3> Party Friends</h3>
-             <% if check_authorized_user(@party, current_user) %>
-              <%= simple_form_for([@party, @new_user_party]) do |f| %>
+          <% if check_authorized_user(@party, current_user) %>
+            <%= simple_form_for([@party, @new_user_party]) do |f| %>
               <p> find your friend by their username below </p>
               <%= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
               <%= f.submit "add friend", class: "btn btn-primary" %>
-              <% end %>
             <% end %>
+          <% end %>
         </div>
         <div class="user-display">
           <h5> Who will be there?</h5>
-        <% @party.user_parties.each do |user_party| %>
-          <%= user_party.user.username %>
-        <% end %>
+          <% @party.user_parties.each do |user_party| %>
+            <%= user_party.user.username %>
+          <% end %>
         </div>
       </div>
     </div>
