@@ -7,10 +7,10 @@
 
 
   <%= f.input :name, label: "Recipe name:" %>
-  <%= f.input :steps, collection: ["Crack the eggs into bowl", "Whisk the eggs", "Pour into pan"], as: :select, input_html: { multiple: true, class: 'select2' }%>
+  <%= f.input :steps, required: true, collection: ["Crack the eggs into bowl", "Whisk the eggs", "Pour into pan"], as: :select, input_html: { multiple: true, class: 'select2' }%>
   <%= f.input :servings, label: "How many people does this serve?" %>
   <%= f.input :readyInMinutes, label: "How long does it take to prepare?" %>
-  <%= f.input :diets, label: "Does this fit any dietary preferences?", collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"]%>
+  <%= f.input :diets, label: "Does this fit any dietary preferences?", collection: ["Gluten-free", "Ketogenic", "Vegetarian", "Vegan", "Pescetarian", "Paleo"], input_html: { multiple: true, class: 'select2' }%>
   <%= f.input :ingredients, collection: ["Milk", "Eggs", "Bread"], as: :select, input_html: { multiple: true, class: 'select2' } %>
 
   <button type="button" class="btn btn-primary"><%= f.button :submit, "Add your recipe!" %></button>

@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    #saving recipe with current user ID
     @recipe = Recipe.new
     @recipe.name = params[:user_recipe][:name]
     ingredients = {}
@@ -23,6 +22,9 @@ class RecipesController < ApplicationController
     params[:user_recipe][:ingredients].each do |ingredient|
       instructions.first[:steps].first[:ingredients] << { name: ingredient } unless ingredient.blank?
     end
+    diets = params[:user_recipe][:diets]
+    diets.delete("")
+    ingredients[:diets] = diets
     @recipe.instructions = instructions
     @recipe.ingredients = ingredients
     @recipe.save
