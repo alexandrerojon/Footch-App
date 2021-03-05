@@ -2,7 +2,7 @@ class PartiesController < ApplicationController
   before_action :set_party, only: [:show, :destroy]
 
   def index
-    @parties = Party.all
+    @parties = current_user.parties
   end
 
   def show

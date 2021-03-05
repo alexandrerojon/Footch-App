@@ -1,49 +1,50 @@
-<h1>Welcome to your cookbook</h1>
+<div>
 
+  <h1>Welcome to your cookbook</h1>
 
-<%= form_tag cookbooks_path, method: :get do %>
-<%= text_field_tag :query,
-params[:query],
-class: "form-control",
-  placeholder: "Find your recipe"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+    <div>
+      <%= form_tag cookbooks_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "Find your recipe"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+    </div>
 
-
-  <div class="recipes_list">
-  
-    <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe) do %>
-      <div class="cookbook_recipe_card">
-        <div class="image_mini">
-         <% if recipe.picture.attached? %>
-           <%=  cl_image_tag recipe.picture.key %>
-          <% else %>
-            <%= image_tag recipe.image %>
-          <% end %>
-        <div class="name">
-          <%= recipe.name %>
+    <div class="card recipes_list">
+      <% @recipes.each do |recipe| %>
+        <%= link_to recipe_path(recipe) do %>
+        <div class="cookbook_recipe_card">
+          <div class="image_mini">
+           <%if recipe.picture.attached? %>
+             <%= cl_image_tag recipe.picture.key %>
+            <% else %>
+              <%= image_tag recipe.image %>
+            <% end %>
+          </div>
+          <div class="name">
+            <%= recipe.name %>
+          </div>
+          <div class="info">
+            <%= recipe.min %>min
+          </div>
+          <div class="info">
+            <%= recipe.serving %>.prs
+          </div>
+          <div class="info">
+            <%= recipe.diet %>
+          </div>
+          <div class="button_card">
+            <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
-        <div class="info">
-          <%= recipe.min %>min
-        </div>
-        <div class="info">
-          <%= recipe.serving %>.prs
-        </div>
-        <div class="info">
-          <%= recipe.diet %>
-        </div>
-        <div class="button_card">
-          <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
+  <h3><button type="button" class="btn btn-primary">  <%= link_to "Add your own recipe!", new_recipe_path %></button></h3>
 
-<h3><button type="button" class="btn btn-primary">  <%= link_to "Add your own recipe!", new_recipe_path %></button></h3>
-
-
+</div>
 

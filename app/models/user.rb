@@ -13,7 +13,8 @@ class User < ApplicationRecord
   has_many :parties, through: :user_parties
 
 
-def send_invitation_email
-  UsermailerMailer.with(user: self).invitation.deliver_now
-end
+  def send_invitation_email
+    UsermailerMailer.with(user: self).invitation.deliver_now
+  end
+
 end
