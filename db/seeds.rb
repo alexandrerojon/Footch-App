@@ -674,5 +674,7 @@ cookbook = Cookbook.create!(user: users.first, recipe: recipe)
 
 party = Party.create!(name: "the secret lunch", date: Date.today, user: users.first)
 
+party.users << users.first
+
 
 
