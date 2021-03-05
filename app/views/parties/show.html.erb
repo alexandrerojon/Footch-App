@@ -89,7 +89,7 @@
                 <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
               </div>
               <div class="delete">
-                <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Delete this recipe', party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
             </div>
           </div>
