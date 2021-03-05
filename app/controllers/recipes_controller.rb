@@ -8,10 +8,11 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new
+    
+    @recipe = Recipe.new(picture: recipe_params[:picture])
     @recipe.name = params[:user_recipe][:name]
     ingredients = {}
-    ingredients[:image] = "https://picsum.photos/200/300/?blur"
+    ingredients[:image] = nil
     ingredients[:servings] = params[:user_recipe][:servings]
     instructions = []
     instructions << { steps: [] }
@@ -29,5 +30,9 @@ class RecipesController < ApplicationController
     @recipe.ingredients = ingredients
     @recipe.save
     redirect_to recipe_path(@recipe), notice: "Your recipe has been added!"
+  end
+
+  def recipe_params
+    params.require(:user_recipe).permit(:picture)
   end
 end

@@ -12,12 +12,16 @@ class: "form-control",
 
 
   <div class="recipes_list">
+  
     <% @recipes.each do |recipe| %>
       <%= link_to recipe_path(recipe) do %>
       <div class="cookbook_recipe_card">
         <div class="image_mini">
-          <%= image_tag recipe.image %>
-        </div>
+         <% if recipe.picture.attached? %>
+           <%=  cl_image_tag recipe.picture.key %>
+          <% else %>
+            <%= image_tag recipe.image %>
+          <% end %>
         <div class="name">
           <%= recipe.name %>
         </div>
