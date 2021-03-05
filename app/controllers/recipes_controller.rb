@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    
+
     @recipe = Recipe.new(picture: recipe_params[:picture])
     @recipe.name = params[:user_recipe][:name]
     ingredients = {}
