@@ -7,7 +7,9 @@ class UsermailerMailer < ApplicationMailer
   # perhaps put user as a parameter of the method and put  inside it in place of lane 9
   def invitation
     @user = params[:user]
+    @party = params[:party_id]
+    
 
-    mail(to: @user.email, subject: "You were invited in the party of  !")
+    mail(to: @user.email, subject: "You were invited in the party of {@party.user.username} !")
   end
 end

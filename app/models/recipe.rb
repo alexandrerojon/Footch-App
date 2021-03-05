@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   has_many :users, through: :cookbooks
   validates :name, presence: true
   has_many :party_recipes, dependent: :destroy
-
+  has_one_attached :image
 
 
   include PgSearch::Model
