@@ -1,0 +1,91 @@
+
+.recipes_list {
+  flex-wrap: wrap;
+}
+
+
+.party_recipe_card{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  padding: 5px;
+  a{text-decoration: none;}
+}
+
+
+  .image_mini {
+    height: 200px;
+    width: 100%;
+    margin-bottom: 10px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+
+    }
+  }
+
+  .info-card {
+  }
+
+
+
+  .name {
+    font-size: 20px;
+  }
+
+  .info {
+    font-size: 10px;
+  }
+
+  .button_card{
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+
+  .vote_up {
+    font-size: 10px;
+    background-color: $brand-pink;
+    padding: 5px 16px;
+
+    a{text-decoration: none;
+      color: white;}
+  &:hover{
+    a{text-decoration: none;
+      color: $brand-pink;
+      background-color: $brand-yellow;}
+      background-color: $brand-yellow;
+    }
+  }
+
+  .vote_num {
+    font-size: 10px;
+    background-color: $brand-pink;
+    border-radius: 50%;
+    padding: 5px;
+    color: white;
+  }
+
+  .delete {
+    font-size: 10px;
+    background-color: $brand-pink;
+    padding: 5px 16px;
+
+       a{text-decoration: none;
+      color: white;}
+  &:hover{
+    a{text-decoration: none;
+      color: $brand-pink;
+      background-color: $brand-yellow;}
+      background-color: $brand-yellow;
+    }
+  }
+
+
