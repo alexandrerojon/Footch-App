@@ -80,7 +80,7 @@
               <% end %>
             </div>
             <div class="vote_up">
-              <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post%>
+              <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
             </div>
             <div class="vote_num">
               <%= party_recipe.votes_for.size %>
