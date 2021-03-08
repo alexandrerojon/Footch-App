@@ -9,12 +9,13 @@
   width: 100%;
   height: 100%;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   margin-top: 8px;
   padding: 5px;
-  a{text-decoration: none;}
+  a{text-decoration: none;
+  color: $txt-important;}
 }
 
 
@@ -42,6 +43,7 @@
 
   .info {
     font-size: 10px;
+    color: $txt-content;
   }
 
   .button_card{
@@ -53,7 +55,7 @@
   .vote_up {
     font-size: 10px;
     background-color: $brand-pink;
-    padding: 5px 16px;
+    padding: 8px 14px;
 
     a{text-decoration: none;
       color: white;}
@@ -67,24 +69,30 @@
 
   .vote_num {
     font-size: 10px;
-    background-color: $brand-pink;
-    border-radius: 50%;
-    padding: 5px;
-    color: white;
+    background-color: white;
+    padding: 8px 14px;
+    color: $brand-pink;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid $brand-pink;
+    border-radius: 50px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
   }
 
   .delete {
     font-size: 10px;
-    background-color: $brand-pink;
-    padding: 5px 16px;
+    background-color: white;
+    padding: 8px 14px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid $brand-pink;
 
        a{text-decoration: none;
-      color: white;}
+      color: $brand-pink;}
   &:hover{
     a{text-decoration: none;
-      color: $brand-pink;
-      background-color: $brand-yellow;}
-      background-color: $brand-yellow;
+      color: white;}
+      background-color: $brand-pink;
     }
   }
 
