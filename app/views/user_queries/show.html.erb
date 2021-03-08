@@ -19,7 +19,7 @@
       <%= recipe.summary %>
     </div>
     <%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
-    <%= link_to "Add to cookbook", cookbooks_path %>
+    <%= link_to 'Save to my cookbook', recipe_cookbooks_path(recipe), method: :post  %>
   </div>
 <% end %>
 <br>

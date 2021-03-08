@@ -80,19 +80,16 @@
   }
 
   .delete {
-    font-size: 10px;
+    font-size: 20px;
     background-color: white;
-    padding: 8px 14px;
     display: inline-block;
     text-align: center;
-    border: 1px solid $brand-pink;
 
        a{text-decoration: none;
       color: $brand-pink;}
   &:hover{
     a{text-decoration: none;
-      color: white;}
-      background-color: $brand-pink;
+      color: $brand-yellow;}
     }
   }
 

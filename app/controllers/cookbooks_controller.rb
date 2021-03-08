@@ -17,9 +17,13 @@ class CookbooksController < ApplicationController
   end
 
   def destroy
-    @cookbook = current_user.cookbooks.find_by(recipe_id: params[:id])
-    @cookbook.destroy
-    redirect_to cookbooks_path, notice: 'This recipe was succesfully removed.'
+    if @cookbook.user == current_user
+      @cookbook = current_user.cookbooks.find_by(recipe_id: params[:id])
+      @cookbook.destroy
+      redirect_to cookbooks_path, notice: 'This recipe was succesfully removed.'
+    else
+      redirect_to cookbooks_path, notice: "You can't removed it's not your cookbook."
+    end
   end
 
   private

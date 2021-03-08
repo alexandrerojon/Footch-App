@@ -21,7 +21,10 @@
             <strong><%= user_party.user.username %> : </strong>
             <% user_party.party_ingredients.each do |party_ingredient| %>
               <%= party_ingredient.name %>
-              <%= link_to "delete ingredient", party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+              <%= link_to party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                <i class="fas fa-times-circle"></i>
+              <% end %>
+
             <% end %>
           </li>
          </ul>
@@ -90,7 +93,9 @@
                 <%= link_to 'Vote', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
               </div>
               <div class="delete">
-                <%= link_to 'Delete this recipe', party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fas fa-times-circle"></i>
+                <% end %>
               </div>
             </div>
           </div>
