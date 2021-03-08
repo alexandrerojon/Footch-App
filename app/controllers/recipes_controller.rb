@@ -6,9 +6,8 @@ class RecipesController < ApplicationController
 
   def new
   end
-
+  
   def create
-
     @recipe = Recipe.new(picture: recipe_params[:picture])
     @recipe.name = params[:user_recipe][:name]
     ingredients = {}
@@ -28,7 +27,9 @@ class RecipesController < ApplicationController
     ingredients[:diets] = diets
     @recipe.instructions = instructions
     @recipe.ingredients = ingredients
+    @recipe.user_id = current_user.id
     @recipe.save
+   
     redirect_to recipe_path(@recipe), notice: "Your recipe has been added!"
   end
 

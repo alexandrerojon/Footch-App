@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [ :show, :new, :create ] do
     resources :cookbooks, only: [ :create ]
+    resources :user
   end
   resources :cookbooks, only: [ :index, :destroy ]
 
@@ -32,5 +33,6 @@ Rails.application.routes.draw do
   resources :party_ingredients, only: [ :destroy ]
   resources :party_recipes, only: [ :destroy ]
   resources :pages
-get 'dashboard', to: 'pages#dashboard', as: :dashboard
+  get 'dashboard', to: 'pages#dashboard'
 end
+ 
