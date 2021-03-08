@@ -81,16 +81,18 @@
 
   .delete {
     font-size: 10px;
-    background-color: $brand-pink;
+    background-color: white;
     padding: 8px 14px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid $brand-pink;
 
        a{text-decoration: none;
-      color: white;}
+      color: $brand-pink;}
   &:hover{
     a{text-decoration: none;
-      color: $brand-pink;
-      background-color: $brand-yellow;}
-      background-color: $brand-yellow;
+      color: white;}
+      background-color: $brand-pink;
     }
   }
 
