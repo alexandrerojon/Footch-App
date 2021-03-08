@@ -30,6 +30,17 @@
   padding: 20px;
 }
 
+
+.user-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.user-status > ul {
+  list-style-type: none;
+}
+
 .party-ingredient {
   color: grey;
 }

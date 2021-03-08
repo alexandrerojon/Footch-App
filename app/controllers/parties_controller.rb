@@ -22,7 +22,7 @@ class PartiesController < ApplicationController
     @party.user = current_user
 
     if @party.save!
-      @party.users << current_user
+      UserParty.create!(party_id: @party.id, user_id: current_user.id, status: "attending")
       redirect_to @party, notice: "Your party has been created"
     else
       render :new
