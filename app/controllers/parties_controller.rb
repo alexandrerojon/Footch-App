@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
   before_action :set_party, only: [:show, :destroy]
+  before_action :authenticate_user!
 
   def index
     @parties = current_user.parties
