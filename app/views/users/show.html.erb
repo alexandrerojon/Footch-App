@@ -1,0 +1,39 @@
+
+
+<div class="user-page">
+
+
+  <h3> Welcome to <%= @username %>'s profile! </h3>
+
+  <br>
+  <br>
+  <br>
+
+    <div class="user-parties">
+      <h5> Parties I am hosting: </h5>
+        <% @party.each do |party| %>
+          <ul class ="list-group">
+            <li class="list-group-item">
+              <%= party.name %> - <%= party.date %>
+            </li>
+          </ul>
+        <% end %>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="user-cookbooks">
+      <h5> Check out my personal recipes: </h5>
+        <% @cookbooks.each do |cookbook| %>
+          <ul class ="list-group">
+            <li class="list-group-item">
+              <%= cookbook.recipe.name %>
+            </li>
+          </ul>
+        <% end %>
+    </div>
+
+
+</div>

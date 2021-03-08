@@ -11,7 +11,7 @@
       <div class="party-show">
         <h1><%= @party.name %></h1>
         <h4><%= @party.date %></h4>
-        <p> by : <%= @party.user.username %></p>
+        <p> by : <%= link_to @party.user.username, user_path(@party.user) %></p>
       </div>
       <div class="ingredients-per-user">
         <h6><strong><u>Who is bringing what?:</u></strong></h6>
