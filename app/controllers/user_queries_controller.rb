@@ -5,7 +5,7 @@ class UserQueriesController < ApplicationController
 
   def create
     #query 1 by ingredients
-    query_string = "&number=25&ingredients=#{params.dig(:query, :ingredients).join(",")}"
+    query_string = "number=25&ignorePantry=true&ranking=1&ingredients=#{params.dig(:query, :ingredients).join(",")}"
     response = RestClient.get "https://api.spoonacular.com/recipes/findByIngredients?#{query_string}",
       {
         params: {"apiKey" => ENV["API_KEY_SPOON"] }
