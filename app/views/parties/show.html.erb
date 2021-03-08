@@ -47,7 +47,8 @@
           <% if check_authorized_user(@party, current_user) %>
             <%= simple_form_for([@party, @new_user_party]) do |f| %>
               <p> find your friend by their username below </p>
-              <%= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
+              <%= f.association :user, collection: User.all, label: false, label_method: :username, input_method: :id, prompt: "Select a friend", input_html: { class: 'select2' } %>
+              <%#= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
               <%= f.submit "add friend", class: "btn btn-primary" %>
             <% end %>
           <% end %>
