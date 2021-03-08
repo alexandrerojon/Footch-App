@@ -4,13 +4,29 @@ class UserQueriesController < ApplicationController
   end
 
   def create
-    query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{params.dig(:query, :ingredients
-      ).join(",")}&diet=#{params.dig(:query, :diet)}"
-    response = RestClient.get "https://api.spoonacular.com/recipes/complexSearch?#{query_string}",
+    #query 1 by ingredients
+    query_string = "ingredients=#{params.dig(:query, :ingredients).join(",")}"
+    response = RestClient.get "https://api.spoonacular.com/recipes/findByIngredients?#{query_string}",
       {
         params: {"apiKey" => ENV["API_KEY_SPOON"] }
       }
-    recipes = JSON.parse(response.body)
+    rfi = JSON.parse(response.body)
+    @ids = []
+    rfi.each do |recipe|
+      @ids << recipe["id"].to_s
+    end
+
+    #query 2 by id's
+    query_id = "ids=#{(@ids).join(",")}"
+    response = RestClient.get "https://api.spoonacular.com/recipes/informationBulk?#{query_id}",
+      {
+        params: {"apiKey" => ENV["API_KEY_SPOON"] }
+      }
+    rfid = JSON.parse(response.body)
+
+    raise
+
+
     @user_query = UserQuery.new
     @user_query.user = current_user
     @user_query.name = "query name"
@@ -35,16 +51,3 @@ class UserQueriesController < ApplicationController
   end
 
 end
-
-
-
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
