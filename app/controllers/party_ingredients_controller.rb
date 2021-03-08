@@ -11,8 +11,12 @@ class PartyIngredientsController < ApplicationController
 
   def destroy
     @party_ingredient = PartyIngredient.find(params[:id])
-    @party_ingredient.destroy
-    redirect_to party_path(@party_ingredient.user_party.party)
+    if @party_ingredient.user_party.user == current_user || @party_ingredient.user_party.party.user == current_user
+      @party_ingredient.destroy
+      redirect_to party_path(@party_ingredient.user_party.party), notice: 'This ingredient was succesfully removed.'
+    else
+      redirect_to party_path(@party_ingredient.user_party.party), notice: "You can't removed this ingredient."
+    end
   end
 
   private

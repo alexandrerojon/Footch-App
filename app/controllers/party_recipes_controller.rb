@@ -33,12 +33,17 @@ class PartyRecipesController < ApplicationController
   end
 
   def destroy
-    @party_recipe.destroy
-    redirect_to party_path(@party_recipe.party), notice: 'This recipe was succesfully removed.'
+    if @party_recipe.party.user == current_user && @party_recipe.destroy
+      redirect_to party_path(@party_recipe.party), notice: 'This recipe was succesfully removed.'
+    else
+      redirect_to party_path(@party_recipe.party), notice: 'You need to be the admin!'
+    end
   end
 
   def voting
-    @party_recipe.liked_by current_user
+    if @party_recipe.party.users.include?(current_user)
+      @party_recipe.liked_by current_user
+    end
     redirect_to party_path(@party_recipe.party)
   end
 
