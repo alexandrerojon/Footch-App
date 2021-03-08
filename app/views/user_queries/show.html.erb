@@ -1,28 +1,30 @@
 
 <h1> List of users's recipes </h1>
 
-<%  @user_query.recipes.each do |recipe| %>
-  <div class="cookbook_recipe_card">
-    <div class="name">
-      <%= recipe.name %>
+<% if @user_query.nil?  %>
+  <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
+<% else %>
+  <%  @user_query.recipes.each do |recipe| %>
+    <div class="cookbook_recipe_card">
+      <div class="name">
+        <%= recipe.name %>
+      </div>
+      <br>
+      <div class="image_mini">
+        <%= image_tag recipe.image unless recipe.image.nil?  %>
+      </div>
+      <br>
+      <div class="info">
+        <%= recipe.min %>
+      </div>
+      <br>
+      <div class="info">
+        <%= recipe.summary %>
+      </div>
+      <%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
+      <%= link_to 'Save to my cookbook', recipe_cookbooks_path(recipe), method: :post  %>
     </div>
-    <br>
-    <div class="image_mini">
-      <%= image_tag recipe.image  %>
-    </div>
-    <br>
-    <div class="info">
-      <%= recipe.min %>
-    </div>
-    <br>
-    <div class="info">
-      <%= recipe.summary %>
-    </div>
-    <%= link_to "See the recipe in details", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
-    <%= link_to 'Save to my cookbook', recipe_cookbooks_path(recipe), method: :post  %>
-  </div>
+  <% end %>
+  <br>
 <% end %>
-<br>
-
-
 
