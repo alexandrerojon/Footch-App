@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'user_queries#new'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  unauthenticated do
+    root to: "pages#home"
+  end
 
+  authenticated :user do
+    root 'user_queries#new', as: :authenticated_root
+  end
+ 
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users, only: [ :show ]
   resources :user_queries, only: [ :new, :create, :show, :index ]
 
   resources :recipes, only: [ :show, :new, :create ] do
@@ -24,4 +32,5 @@ Rails.application.routes.draw do
   end
   resources :party_ingredients, only: [ :destroy ]
   resources :party_recipes, only: [ :destroy ]
+  
 end
