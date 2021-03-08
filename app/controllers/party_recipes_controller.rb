@@ -4,17 +4,29 @@ class PartyRecipesController < ApplicationController
   before_action :set_party, except: [:voting, :destroy]
 
   def create
-    query_string = "instructionsRequired=true&addRecipeInformation=true&query=#{ @party.party_ingredients.map{ |ingredient| ingredient.name}.join(",").delete(" ")}"
-    p query_string
-
-    response = RestClient.get "https://api.spoonacular.com/recipes/complexSearch?#{query_string}",
+    #query 1 by ingredients from party
+    query_string = "number=25&ignorePantry=true&ranking=1&ingredients=#{ @party.party_ingredients.map{ |ingredient| ingredient.name}.join(",").delete(" ")}"
+    response = RestClient.get "https://api.spoonacular.com/recipes/findByIngredients?#{query_string}",
       {
         params: {"apiKey" => ENV["API_KEY_SPOON"] }
       }
-    recipes = JSON.parse(response.body)
-    p recipes
+    recipes_by_ingredients = JSON.parse(response.body)
+    @ids = []
+    recipes_by_ingredients.each do |recipe|
+      @ids << recipe["id"].to_s
+    end
 
-    recipes["results"].each do |recipe_hash|
+    #query 2 by ids from party
+    query_id = "ids=#{(@ids).join(",")}"
+    response = RestClient.get "https://api.spoonacular.com/recipes/informationBulk?#{query_id}",
+      {
+        params: {"apiKey" => ENV["API_KEY_SPOON"] }
+      }
+    recipe_found_by_ids = JSON.parse(response.body)
+
+    #creating the party recipe from the has
+    recipe_found_by_ids.each do |recipe_hash|
+      next unless recipe_hash["analyzedInstructions"].present?
       recipe = Recipe.create!(
         name: recipe_hash["title"],
         ingredients: recipe_hash,

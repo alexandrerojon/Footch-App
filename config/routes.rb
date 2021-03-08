@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :cookbooks, only: [ :index, :destroy ]
 
   resources :parties, only: [ :index, :new, :create, :show, :destroy ] do
-    resources :user_parties, only: [:create]
+    resources :user_parties, only: [:create, :update]
     resources :party_recipes, only: [ :create, :update ]
     resources :messages, only: [:create]
 
