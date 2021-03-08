@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   end
   resources :party_ingredients, only: [ :destroy ]
   resources :party_recipes, only: [ :destroy ]
-  
-  
+  resources :pages
+get 'dashboard', to: 'pages#dashboard', as: :dashboard
 end
