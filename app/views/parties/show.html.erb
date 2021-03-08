@@ -5,6 +5,17 @@
     <% end %>
 </div>
 
+<% if @user_party.status == "pending"%>
+  <div class="pending-participants">
+      <p><%= @party.user.username %> invited you to <%= @party.name %></p>
+      <div> <%= simple_form_for [@party, @user_party], html: { class: 'form-inline' } do |f| %>
+        <%= f.input :status, label: false, collection: UserParty::STATUS %>
+        <%= f.submit "Submit"%>
+        <% end %>
+      </div>
+  </div>
+<% end %>
+
 <div class="page-party">
   <div class="card-party">
     <div class="card">
@@ -15,7 +26,9 @@
       </div>
       <div class="ingredients-per-user">
         <h6><strong><u>Who is bringing what?:</u></strong></h6>
+        <% %>
         <% @party.user_parties.each do |user_party| %>
+        <% next if user_party.status == "not attending" %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <strong><%= user_party.user.username %> : </strong>
@@ -27,6 +40,7 @@
          </ul>
         <% end %>
       </div>
+      <% if @user_party.status == "attending" %>
       <div class="form">
         <h6 class="card-title"><u>Tell us what ingredients you're bringing below:</u></h6>
         <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
@@ -34,11 +48,12 @@
           <%= f.submit "add", class: "btn btn-primary" %>
         <% end %>
       </div>
+      <% end %>
       <br>
     </div>
       <div class="card">
         <div class="user-add">
-          <h3> Party Friends</h3>
+          <h3>Party Friends</h3>
           <% if check_authorized_user(@party, current_user) %>
             <%= simple_form_for([@party, @new_user_party]) do |f| %>
               <p> find your friend by their username below </p>
@@ -48,10 +63,30 @@
           <% end %>
         </div>
         <div class="user-display">
-          <h5> Who will be there?</h5>
-          <% @party.user_parties.each do |user_party| %>
-            <%= user_party.user.username %>
-          <% end %>
+          <div class="user-status">
+            <h5>Attending</h5>
+            <ul>
+              <% @party.user_parties.each do |user_party| %>
+                <li><%= user_party.user.username if user_party.status == "attending"%></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="user-status">
+            <h5>Not Attending</h5>
+              <ul>
+              <% @party.user_parties.each do |user_party| %>
+                <li><%= user_party.user.username if user_party.status == "not attending"%></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="user-status">
+            <h5>Pending</h5>
+              <ul>
+              <% @party.user_parties.each do |user_party| %>
+                <li><%= user_party.user.username if user_party.status == "pending"%></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
