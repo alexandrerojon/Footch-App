@@ -11,9 +11,6 @@
 
  <% end %>
 
-
-
-
 <h2>Parties you joined </h2>
 
 <% current_user.parties.each do |member| %>
@@ -27,4 +24,8 @@
 
 
 <h2> How many recipes did you create ? </h2>
+<%= @recipes.count%>
+    
+    
+
 

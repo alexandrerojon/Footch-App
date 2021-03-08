@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   before_action :set_user, only: [:index]
   def home
   end
-  def index
-  
-  
+
+  def dashboard
+    @recipes = current_user.created_recipes
   end
 
   private
