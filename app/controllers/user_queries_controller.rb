@@ -35,3 +35,16 @@ class UserQueriesController < ApplicationController
   end
 
 end
+
+
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
