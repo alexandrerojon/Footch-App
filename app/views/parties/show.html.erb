@@ -18,11 +18,16 @@
         <% @party.user_parties.each do |user_party| %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <strong><%= user_party.user.username %> : </strong>
-            <% user_party.party_ingredients.each do |party_ingredient| %>
-              <%= party_ingredient.name %>
-              <%= link_to "delete ingredient", party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
-            <% end %>
+            <span><%= user_party.user.username %> : </span >
+              <% if  %>
+                <% user_party.party_ingredients.empty? %>
+                 <p><% user_party.user.username %> hasn't added anything yet!</p>
+                 <% else %>
+                  <% user_party.party_ingredients.each do |party_ingredient| %>
+                    <span class="party-ingredient"><%= party_ingredient.name %></span>
+                    <%= link_to "delete ingredient", party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+                  <% end %>
+              <% end %>
           </li>
          </ul>
         <% end %>
