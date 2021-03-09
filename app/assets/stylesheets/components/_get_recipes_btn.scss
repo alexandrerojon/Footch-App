@@ -1,0 +1,14 @@
+.btn-get-recipes {
+    color: white;
+    padding: 8px 15px ;
+    border-color: $footch-teal;
+    background: $footch-teal;
+    transition: 1s;
+    opacity: 0.8 ;
+
+&:hover {
+  a{text-decoration:none;}
+  opacity: 1;
+  color: white;
+  }
+}

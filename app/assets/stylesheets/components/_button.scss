@@ -1,15 +1,35 @@
 
-.btn-primary {
-  background-color: #F5BCC4;
-  border: none;
-}
-
 .homepage-buttons {
   display: flex;
   justify-content: center;
   padding: 10px;
+  a{color: $footch-light-orange;}
+  padding: 5px 10px;
+  border: 1px solid;
+  border-color: $footch-light-orange;
+  background: white;
+  transition: 0.5s;
+  font-family: $brand-font;
 }
 
 .btn {
   margin: 10px;
+}
+
+.btn-my-parties {
+   a{color: $footch-light-orange;}
+    padding: 5px 10px;
+    border: 1px solid;
+    border-color: $footch-light-orange;
+    background: white;
+    transition: 1s;
+    font-family: $brand-font;
+  &:hover{
+    a{color: white;}
+    a{text-decoration:none;}
+    background: $footch-light-orange;
+    font-family: $brand-font;
+    border: 0px;
+  }
+
 }

@@ -1,16 +1,16 @@
 .btn-log {
-    a{color: #326069;}
+    a{color: white;}
     padding: 8px 15px ;
     border: 3px solid;
-    border-color: #326069;
-    background: white;
+    border-color: $footch-teal;
+    background: $footch-teal;
     transition: 1s;
     opacity: 0.50 ;
-    
+
   }
-  
+
   .btn-log:hover {
       a{text-decoration:none;}
       opacity: 1;
-    
+
   }
