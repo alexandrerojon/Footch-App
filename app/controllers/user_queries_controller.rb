@@ -31,7 +31,7 @@ class UserQueriesController < ApplicationController
     @user_query.save
     recipe_found_by_ids.each do |recipe_hash|
       next unless recipe_hash["analyzedInstructions"].present?
-      recipe = Recipe.create!(
+      recipe = Recipe.create(
         name: recipe_hash["title"],
         ingredients: recipe_hash,
         instructions: recipe_hash["analyzedInstructions"],

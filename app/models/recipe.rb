@@ -77,7 +77,7 @@ class Recipe < ApplicationRecord
   end
 
   def need_image
-    errors.add(:picture, "You need to add a picture!") if self.picture.blank?
+    errors.add(:picture, "You need to add a picture!") if self.picture.blank? && self.image.blank?
   end
 
   def need_steps
