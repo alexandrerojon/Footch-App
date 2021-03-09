@@ -1,0 +1,34 @@
+.footer {
+  background-color: $footer;
+  text-align: center;
+  padding: 10px;
+  font-family: $brand-font;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  color: $footch-teal;
+}
+
+#brand-name {
+  color: $footch-green;
+  font-weight: bolder;
+}
+
+.item > a > i {
+  color: $footch-green;
+  font-size: 25px;
+}
+
+.item > i {
+  color: $footch-dark-orange;
+}
+
+.item > a {
+  color: $footch-dark-orange;
+}
+
+.item > a:hover {
+  text-decoration: none;
+  a{color: $footch-dark-orange;}
+}
