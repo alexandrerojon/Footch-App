@@ -32,7 +32,6 @@ class Recipe < ApplicationRecord
 
   def serving
     serve = self.ingredients["servings"]
-    return "Number of servings: #{serve}"
   end
 
   def servings
@@ -49,7 +48,6 @@ class Recipe < ApplicationRecord
 
   def min
     time = self.ingredients["readyInMinutes"]
-    return "Preparation time: #{time} minutes"
   end
 
   def diet

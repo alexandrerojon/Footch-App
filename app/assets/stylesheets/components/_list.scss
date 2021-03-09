@@ -2,6 +2,20 @@
 .recipes_list {
   flex-wrap: wrap;
 }
+.recipe_card {
+  overflow: hidden;
+  width: 390px;
+  height: 100%;
+  background: white;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $footch-light-orange;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  font: $brand-font;
+  color: $footch-green;
+  justify-content: space-around;
+}
 
 
 .party_recipe_card{
@@ -14,36 +28,64 @@
   flex-direction: column;
   margin-top: 8px;
   padding: 5px;
+  font: $brand-font;
+  color: $footch-green;
+
   a{text-decoration: none;
-  color: $txt-important;}
+  color: $txt-important;
+  font: $brand-font}
 }
 
 
   .image_mini {
-    height: 200px;
-    width: 100%;
-    margin-bottom: 10px;
+    padding: 5px;
 
     img {
-      height: 100%;
-      width: 100%;
+      height: 150px;
+      width: 150px;
       object-fit: cover;
+      overflow: hidden;
+      border: 1px solid $footch-teal;
+      border-radius: 3px;
 
     }
   }
 
   .info-card {
+    min-height: 100%;
+    font: $brand-font;
+    a {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      min-height: 100%;
+    }
+
+  }
+
+  .text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100%;
   }
 
 
 
   .name {
     font-size: 20px;
+    color: $footch-teal;
   }
 
   .info {
+    font: $brand-font-light;
     font-size: 10px;
-    color: $txt-content;
+    color: $footch-teal;
+    strong {
+      font: $brand-font-light;
+      color: $footch-light-orange;
+    }
   }
 
   .button_card{
