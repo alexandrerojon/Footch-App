@@ -1,0 +1,16 @@
+.btn-delete {
+    a{color: white;}
+    padding: 8px 15px ;
+    border: 3px solid;
+    border-color: #F18827;
+    background: #F18827;
+    transition: 1s;
+    opacity: 0.50 ;
+    
+  }
+  
+  .btn-delete:hover {
+      a{text-decoration:none;}
+      opacity: 1;
+    
+  }
