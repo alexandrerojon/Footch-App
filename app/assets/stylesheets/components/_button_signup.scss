@@ -1,16 +1,18 @@
 .btn-signup {
-    a{color: white;}
+
+    a{color: $footch-teal;}
     padding: 8px 15px ;
+    font-family: $brand-font;
     border: 3px solid;
-    border-color: #326069;
-    background: #326069;
+    border-color: $footch-teal;
+    background: white;
     transition: 1s;
     opacity: 0.50 ;
-    
+
   }
-  
+
   .btn-signup:hover {
       a{text-decoration:none;}
       opacity: 1;
-    
+
   }

@@ -1,17 +1,37 @@
 .btn-create {
-    a{color: #F18827;}
-    padding: 8px ;
-    border: 3px solid;
-    border-color: #F18827;
+    a{color: $footch-light-orange;}
+    padding: 5px 10px;
+    border: 1px solid;
+    border-color: $footch-light-orange;
     background: white;
-    transition: 1s;
-    
+    transition: 0.5s;
+    font-family: $brand-font;
+
   }
-  
+
   .btn-create:hover {
     a{color: white;}
     a{text-decoration:none;}
-    background: #F18827;
-    text-shadow:(0px 2px 1px black);
-    
+    background: $footch-light-orange;
+    font-family: $brand-font;
+    border: 0px;
+  }
+
+  .btn-add {
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid;
+    background: $footch-light-orange;
+    transition: 0.5s;
+    font-family: $brand-font;
+    opacity: 0.8 ;
+
+    &:hover{
+    color: white;
+    a{text-decoration:none;}
+    background: $footch-light-orange;
+    font-family: $brand-font;
+    border: 0px;
+    box-shadow: 1px 1px 3px $txt-content;
+    }
   }

@@ -54,7 +54,7 @@
         <h6 class="card-title"><u>Tell us what ingredients you're bringing below:</u></h6>
         <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
           <%= f.input :name, label: false %>
-          <%= f.submit "add", class: "btn btn-primary" %>
+          <%= f.submit "Add", class: "btn btn-add" %>
         <% end %>
       </div>
       <% end %>
@@ -68,7 +68,7 @@
               <p> find your friend by their username below </p>
               <%= f.association :user, collection: User.all, label: false, label_method: :username, input_method: :id, prompt: "Select a friend", input_html: { class: 'select2' } %>
               <%#= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
-              <%= f.submit "add friend", class: "btn btn-primary" %>
+              <%= f.submit "Add friend", class: "btn btn-add" %>
             <% end %>
           <% end %>
         </div>
