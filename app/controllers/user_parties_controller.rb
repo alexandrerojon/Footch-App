@@ -9,7 +9,7 @@ class UserPartiesController < ApplicationController
     @user_party.status = "pending"
     @user_party.save!
     @user.send_invitation_email
-  
+
     redirect_to party_path(@user_party.party_id), notice: "Your friend has been added!"
   end
 

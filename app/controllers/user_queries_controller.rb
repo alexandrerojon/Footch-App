@@ -30,8 +30,8 @@ class UserQueriesController < ApplicationController
     @user_query.name = "query name"
     @user_query.save
     recipe_found_by_ids.each do |recipe_hash|
-      next unless recipe_hash["analyzedInstructions"].present?
-      recipe = Recipe.create!(
+      next unless recipe_hash["analyzedInstructions"].present? && recipe_hash["analyzedInstructions"][0]["steps"].present? && recipe_hash["image"].present?
+      recipe = Recipe.create(
         name: recipe_hash["title"],
         ingredients: recipe_hash,
         instructions: recipe_hash["analyzedInstructions"],
