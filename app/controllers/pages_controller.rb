@@ -6,6 +6,9 @@ class PagesController < ApplicationController
 
   def dashboard
     @recipes = current_user.created_recipes
+    @cookbook = current_user.recipes
+    @user_queries = current_user.user_queries
+
   end
 
   private

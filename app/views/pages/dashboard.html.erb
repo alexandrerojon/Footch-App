@@ -4,28 +4,30 @@
 
 
 <% current_user.created_parties. each do |party|%>
-<%= party.name %>
-<%= party.date %>
-<%= link_to 'More details', party_path(party)%>
-<br>
+    <%= party.name %>
+    <%= party.date %>
+    <%= link_to 'More details', party_path(party)%>
+    <br>
 
- <% end %>
+<% end %>
 
 <h2>Parties you joined </h2>
 
 <% current_user.parties.each do |member| %>
-<%= member.name %>
-<%= member.date %>
-<%= link_to 'More details', party_path(member)%>
-<br>
+    <%= member.name %>
+    <%= member.date %>
+    <%= link_to 'More details', party_path(member)%>
+    <br>
 <% end %>
 
 <h3><button type="button" class="btn btn-primary">  <%= link_to "Homepage!", authenticated_root_path %></button></h3>
 
 
 <h2> How many recipes did you create ? </h2>
-<%= @recipes.count%>
-    
-    
-
+    <%= @recipes.count %>
+<h2> How many recipes in your cookbook </h2>
+    <%= @cookbook.count %>
+<h2> How many recipes did you look for? </h2>
+    <%= @user_queries.count %>
+<h2> How many marties did you attend </h2>
 
