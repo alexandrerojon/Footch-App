@@ -10,9 +10,9 @@ class CookbooksController < ApplicationController
 
   def index
     if params[:query].present?
-      @recipes = current_user.recipes.search_by_name(params[:query])
+      @recipes = current_user.recipes.search_by_name(params[:query]).order(created_at: :desc)
     else
-      @recipes = current_user.recipes
+      @recipes = current_user.recipes.order(created_at: :desc)
     end
   end
 
