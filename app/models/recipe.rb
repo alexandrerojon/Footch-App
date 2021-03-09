@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-
+  validate :need_name, :need_steps, :need_ingredients, :need_image
   has_many :cookbooks, dependent: :destroy
   has_many :query_recipes, dependent: :destroy
   has_many :users, through: :cookbooks
@@ -22,8 +22,10 @@ class Recipe < ApplicationRecord
 
   def steps
     steps = []
-    self.instructions[0]["steps"].each do |step|
-       steps << step["step"]
+    if self.instructions.present?
+      self.instructions[0]["steps"].each do |step|
+        steps << step["step"]
+      end
     end
     return steps
   end
@@ -33,13 +35,25 @@ class Recipe < ApplicationRecord
     return "Number of servings: #{serve}"
   end
 
+  def servings
+    ""
+  end
+
+  def readyInMinutes
+    ""
+  end
+
+  def diets
+    self.diet
+  end
+
   def min
     time = self.ingredients["readyInMinutes"]
     return "Preparation time: #{time} minutes"
   end
 
   def diet
-    self.ingredients["diets"]
+    self.ingredients.present? ? self.ingredients["diets"] : []
   end
 
   def ingredients_list
@@ -56,6 +70,21 @@ class Recipe < ApplicationRecord
 
   def summary
     self.ingredients["summary"].truncate_words(20).gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"")
+  end
 
+  def need_name
+    errors.add(:name, "You need a recipe name!") if self.name.blank?
+  end
+
+  def need_image
+    errors.add(:picture, "You need to add a picture!") if self.picture.blank?
+  end
+
+  def need_steps
+   errors.add(:steps, "You need to add your instructions!") if self.steps.empty?
+  end
+
+  def need_ingredients
+    errors.add(:ingredients, "You need to add your ingredients!") if self.ingredients.empty?
   end
 end
