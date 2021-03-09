@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $brand-color;
+  background: $footch-teal;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,27 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-text {
+  color: $footch-dark-orange;
+}
+
+
+.fa-utensils {
+  color: $footch-dark-orange;
+}
+
+.signed-in {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.not-signed-in {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
