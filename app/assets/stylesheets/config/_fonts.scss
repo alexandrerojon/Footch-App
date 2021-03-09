@@ -1,8 +1,11 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Quicksand&display=swap');
 // Define fonts for body and headers
-$body-font: "Work Sans", 'Quicksand', sans-serif;
-$headers-font: "Nunito", 'Fjalla One', sans-serif;
+// $body-font: "Work Sans", 'Quicksand', sans-serif;
+// $headers-font: "Nunito", 'Fjalla One', sans-serif;
+$brand-font-light:'Noto Sans', sans-serif;
+$brand-font: 'Noto Sans', sans-serif;
+$brand-font-bold:'Noto Sans TC', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
