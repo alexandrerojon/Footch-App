@@ -6,16 +6,19 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
+
 module FOOTCH
   class Application < Rails::Application
     config.generators do |generate|
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
-    end
+      end
+      config.load_defaults 6.0
+      config.exceptions_app = self.routes
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -1,3 +1,6 @@
+
+
+
 .btn-create {
     a{color: $footch-light-orange;
       display: flex;
@@ -41,5 +44,16 @@
     font-family: $brand-font;
     border: 0px;
     box-shadow: 1px 1px 3px $txt-content;
+    }
+  }
+
+  #create_party {
+    color: $footch-light-orange;
+    margin: 5px;
+
+
+    &:hover{
+      color: white;
+      a{text-decoration: red;}
     }
   }

@@ -29,6 +29,7 @@ gem 'letter_opener', group: :development
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'postmark-rails'
 gem 'acts_as_votable'
 gem 'pg_search', '~> 2.3.0'
 gem 'rest-client'

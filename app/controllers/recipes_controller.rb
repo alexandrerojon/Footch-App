@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
     ingredients[:diets] = diets
     @recipe.instructions = instructions
     @recipe.ingredients = ingredients
-    @recipe.user_id = current_user.id
+    @recipe.user = current_user
 
     if @recipe.save
       current_user.recipes << @recipe

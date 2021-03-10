@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   has_many :users, through: :cookbooks
   validates :name, presence: true
   has_many :party_recipes, dependent: :destroy
+  belongs_to :user, optional: true
   has_one_attached :picture
 
 

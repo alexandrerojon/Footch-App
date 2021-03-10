@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   
+  devise_for :users
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
   unauthenticated do
     root to: "pages#home"
   end
@@ -34,5 +36,6 @@ Rails.application.routes.draw do
   resources :party_recipes, only: [ :destroy ]
   resources :pages
   get 'dashboard', to: 'pages#dashboard'
+  
 end
  

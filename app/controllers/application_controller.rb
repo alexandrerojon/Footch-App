@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path && return unless record.user == user
   end
 
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+end
+
 end
