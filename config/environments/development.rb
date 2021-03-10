@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
   #Open the letter in a new tab
   config.action_mailer.delivery_method = :letter_opener
   # Enable/disable caching. By default caching is disabled.
