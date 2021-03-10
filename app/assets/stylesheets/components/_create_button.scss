@@ -1,17 +1,25 @@
 .btn-create {
-    a{color: $footch-light-orange;}
+    a{color: $footch-light-orange;
+      display: flex;
+      align-items: center;
+      }
     padding: 5px 10px;
     border: 1px solid;
     border-color: $footch-light-orange;
     background: white;
     transition: 0.5s;
     font-family: $brand-font;
+    display: flex;
+    align-items: center
 
   }
 
   .btn-create:hover {
-    a{color: white;}
-    a{text-decoration:none;}
+    a{color: white;
+      text-decoration:none;
+      display: flex;
+      align-items: center;
+    }
     background: $footch-light-orange;
     font-family: $brand-font;
     border: 0px;

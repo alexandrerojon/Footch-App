@@ -14,34 +14,40 @@
         <% end %>
     </div>
 
-    <div class="card recipes_list">
+    <div class="list">
       <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe) do %>
-        <div class="cookbook_recipe_card">
+      <%= link_to recipe_path(recipe) do %>
+        <div class="recipe_card">
           <div class="image_mini">
-           <%if recipe.picture.attached? %>
+            <%if recipe.picture.attached? %>
              <%= cl_image_tag recipe.picture.key %>
             <% else %>
               <%= image_tag recipe.image %>
             <% end %>
           </div>
-          <div class="name">
-            <%= recipe.name %>
-          </div>
-          <div class="info">
-            <%= recipe.min %>min
-          </div>
-          <div class="info">
-            <%= recipe.serving %>.prs
-          </div>
-          <div class="info">
-            <%= recipe.diet %>
-          </div>
-          <div class="button_card">
-            <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="info-card container">
+            <div class="text-info">
+              <div class="name row">
+                <%= recipe.name.truncate(20) %>
+              </div>
+              <div class="info row">
+                <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+              </div>
+              <div class="info row">
+                <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+              </div>
+              <div class="info row">
+                <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+              </div>
+            </div>
+          <div class="button_card row">
+            <div class="btn-create col-3">
+              <%= link_to 'DELETE', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
           </div>
         </div>
-        <% end %>
+        </div>
+      <% end %>
       <% end %>
     </div>
 
