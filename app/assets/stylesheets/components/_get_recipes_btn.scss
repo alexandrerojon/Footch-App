@@ -1,10 +1,11 @@
 .btn-get-recipes {
     color: white;
-    padding: 8px 15px ;
+    padding: 5px 10px ;
     border-color: $footch-teal;
     background: $footch-teal;
-    transition: 1s;
+    transition: 0.5s;
     opacity: 0.8 ;
+    font-family: $brand-font;
 
 &:hover {
   a{text-decoration:none;}
