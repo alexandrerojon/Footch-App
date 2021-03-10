@@ -1,3 +1,10 @@
+#main-navbar {
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  z-index:1;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $footch-teal;
@@ -33,4 +40,36 @@
   display: flex;
   justify-content: space-between;
   padding: 5px;
+}
+
+
+#logo {
+  color: $footch-dark-orange;
+  font-size: 40px;
+  &:hover{
+    background-color: $footch-teal;
+  a{text-decoration:none;}
+  }
+}
+
+#dropdownMenu2 {
+  font-size: 40px;
+}
+
+.dropdown {
+  display: flex;
+  align-items: baseline;
+}
+
+.footch-talking {
+  color: $footch-dark-orange;
+  font-size: 15px;
+  p {
+    margin-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  .navbar-text {
+    font-size: 25px;
+  }
 }
