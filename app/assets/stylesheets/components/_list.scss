@@ -1,4 +1,11 @@
 
+.list {
+  flex-wrap: wrap;
+  display: flex;
+  padding: 10px;
+
+}
+
 .recipes_list {
   flex-wrap: wrap;
 }
@@ -7,7 +14,7 @@
   width: 390px;
   height: 100%;
   background: white;
-  margin-top: 8px;
+  margin: 5px;
   display: flex;
   align-items: center;
   border: 1px solid $footch-light-orange;
