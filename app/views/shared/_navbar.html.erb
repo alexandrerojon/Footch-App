@@ -3,8 +3,8 @@
     <% if user_signed_in? %>
       <div class="signed-in">
         <div>
-          <p>What's in your fridge?</p>
-          <h4 class="navbar-text"> welcome <%= current_user.username %></h4>
+          <p class="navbar-text">What's in your fridge</p>
+          <h4 class="navbar-text"><%= current_user.username %>?</h4>
         </div>
 
         <div class="dropdown">
@@ -19,7 +19,7 @@
               <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
-          <h4>Footch.</h4>
+          <h4 class="navbar-text">Footch.</h4>
         </div>
       </div>
 
