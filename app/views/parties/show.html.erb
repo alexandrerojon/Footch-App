@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@party.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, "#{@party.name} on the #{@party.date}"  %>
+<%# content_for :meta_image, cl_image_path(@parties.photo.path) %>
+
 <div class="party-page-buttons">
   <% if check_authorized_user(@party, current_user) %>
     <h5><%= link_to "Check the recipes", party_party_recipes_path(@party), method: :post %></h5>
