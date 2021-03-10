@@ -34,6 +34,6 @@
   <%= link_to'All recipes', user_query_path(params[:user_query_id]) %>
 <% end %>
 
-<%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
+<button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
 
-<%= link_to 'My cookbook', cookbooks_path %>
+<button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
