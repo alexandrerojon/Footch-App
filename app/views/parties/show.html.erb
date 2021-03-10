@@ -7,7 +7,6 @@
       <h5><button type="button" class="btn btn-delete"> <%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %></h5>
       <% end %>
   </div>
-
   <% if @user_party.status == "pending"%>
     <div class="pending-participants">
       <p><%= @party.user.username %> invited you to <%= @party.name %></p>
@@ -78,29 +77,60 @@
             <div class="user-status">
               <h5>Attending</h5>
               <ul>
-                <% @party.user_parties.each do |user_party| %>
-                  <li><%= user_party.user.username if user_party.status == "attending"%></li>
-                <% end %>
-              </ul>
+              <% @party.user_parties.each do |user_party| %>
+                <li><%= user_party.user.username if user_party.status == "pending"%></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="party_recipes_list">
+      <% @party.party_recipes.each do |party_recipe| %>
+      <% recipe = party_recipe.recipe %>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="recipe_card">
+          <div class="image_mini">
+            <%= image_tag recipe.image %>
+          </div>
+          <div class="info-card container">
+            <div class="text-info">
+              <div class="name row">
+                <%= recipe.name.truncate(20) %>
+              </div>
+              <div class="info row">
+                <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+              </div>
+              <div class="info row">
+                <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+              </div>
+              <div class="info row">
+                <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+              </div>
             </div>
-            <div class="user-status">
-              <h5>Not Attending</h5>
-                <ul>
-                <% @party.user_parties.each do |user_party| %>
-                  <li><%= user_party.user.username if user_party.status == "not attending"%></li>
-                <% end %>
-              </ul>
+          <div class="button_card row">
+            <div class="vote_num col-3">
+              <%= party_recipe.votes_for.size %>
             </div>
-            <div class="user-status">
-              <h5>Pending</h5>
-                <ul>
-                <% @party.user_parties.each do |user_party| %>
-                  <li><%= user_party.user.username if user_party.status == "pending"%></li>
-                <% end %>
-              </ul>
+            <div class="btn-create col-3">
+              <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
+            </div>
+            <div class="btn-create col-3">
+              <%= link_to "DELETE", party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
             </div>
           </div>
         </div>
+      <% end %>
+      <% end %>
+  </div>
+  <div class="card-party">
+    <div class="chatbox">
+      <div id="messages" data-party-id="<%= @party.id %>">
+        <% @party.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
       </div>
       <div class="card-party">
         <div class="chatbox">

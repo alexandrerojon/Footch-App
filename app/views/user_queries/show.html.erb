@@ -11,26 +11,26 @@
       <div class="image_mini">
         <%= image_tag recipe.image unless recipe.image.nil?  %>
       </div>
-      <div class="info-card">
+      <div class="info-card container">
         <div class="text-info">
-          <div class="name">
-            <%= recipe.name %>
+          <div class="name row">
+            <%= recipe.name.truncate(20) %>
           </div>
-          <div class="info">
+          <div class="info row">
             <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
           </div>
-          <div class="info">
+          <div class="info row">
             <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
           </div>
-          <div class="info">
-            <small>Diet:</small> <strong><%= recipe.diet.join(", ") %></strong>
+          <div class="info row">
+            <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
           </div>
         </div>
-        <div class="button_card">
-          <div class="btn-create">
+        <div class="button_card row">
+          <div class="btn-create col-3">
             <%= link_to "MORE", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
           </div>
-          <div class="btn-create">
+          <div class="btn-create col-3">
             <%= link_to 'SAVE', recipe_cookbooks_path(recipe), method: :post  %>
           </div>
         </div>

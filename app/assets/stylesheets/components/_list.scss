@@ -6,6 +6,11 @@
 
 }
 
+.party_recipes_list {
+  display: flex;
+  flex-direction: column;
+}
+
 .recipes_list {
   flex-wrap: wrap;
 }
@@ -15,13 +20,14 @@
   height: 100%;
   background: white;
   margin: 5px;
+  padding: 3px;
   display: flex;
   align-items: center;
   border: 1px solid $footch-light-orange;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
   font: $brand-font;
   color: $footch-green;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 
@@ -54,6 +60,7 @@
       overflow: hidden;
       border: 1px solid $footch-teal;
       border-radius: 3px;
+      margin-right: 10px;
 
     }
   }
@@ -63,19 +70,20 @@
     font: $brand-font;
     a {
       text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-around;
       min-height: 100%;
+      align-content: space-between;
     }
-
   }
 
   .text-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
     min-height: 100%;
+
   }
 
 
@@ -83,49 +91,52 @@
   .name {
     font-size: 20px;
     color: $footch-teal;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
   }
 
   .info {
     font: $brand-font-light;
     font-size: 10px;
     color: $footch-teal;
+    align-items: baseline;
     strong {
       font: $brand-font-light;
       color: $footch-light-orange;
+      margin-left: 3px;
+      margin-bottom: 5px;
     }
   }
 
   .button_card{
-    display: flex;
-    justify-content: space-evenly;
+    // display: flex;
+    justify-content: start;
+    margin-top: 10px;
 
-  }
-
-  .vote_up {
-    font-size: 10px;
-    background-color: $brand-pink;
-    padding: 8px 14px;
-
-    a{text-decoration: none;
-      color: white;}
-  &:hover{
-    a{text-decoration: none;
-      color: $brand-pink;
-      background-color: $brand-yellow;}
-      background-color: $brand-yellow;
+    .btn-create{
+      font-size: 8px;
+      justify-content: space-evenly;
+      margin-right: 10px;
     }
+
   }
+
+
 
   .vote_num {
     font-size: 10px;
     background-color: white;
     padding: 8px 14px;
-    color: $brand-pink;
+    color: $footch-light-orange;
     display: inline-block;
     text-align: center;
-    border: 1px solid $brand-pink;
+    border: 1px solid $footch-light-orange;
     border-radius: 50px;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
   }
 
   .delete {

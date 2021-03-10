@@ -1,10 +1,14 @@
-<h1> Here you can find all your parties <%= current_user.username %> !</h1> 
+<h1 id="special-title"> Here you can find all your parties <%= current_user.username %> !</h1> 
 
+<ul class ="list-group">
+    <% @parties.each do |element|  %>
+        <%= link_to party_path(element) do %>
+        <li class="list-group-item btn-create" id="create_party">
+        <%= element.name %>
+        <%= element.date %>
+        </li>
+        <% end %>
+    <% end %>
+</ul>
+<button type="button" class="btn btn-create"><%= link_to "Start party", new_party_path %>
 
-<% @parties.each do |element|  %>
-<%= element.name %>
-<%= element.date %>
-<%= link_to "Show the party", party_path(element) %>
-<br>
-<% end %>
-<%= link_to "Create a party", new_party_path %>
