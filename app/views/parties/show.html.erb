@@ -4,7 +4,7 @@
 
 <div class="party-page-buttons">
   <% if check_authorized_user(@party, current_user) %>
-    <h5><%= link_to "Check the recipes", party_party_recipes_path(@party), method: :post %></h5>
+    <h5><button type="button" class="btn btn-create"><%= link_to "Check the recipes", party_party_recipes_path(@party), method: :post %></h5>
     <h5><button type="button" class="btn btn-delete"> <%= link_to 'Delete this party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %></h5>
     <% end %>
 </div>

@@ -1,7 +1,7 @@
 <div>
 
   <h1>Welcome to your cookbook</h1>
-    <h3><button type="button" class="btn btn-primary">  <%= link_to "Add your own recipe!", new_recipe_path %></button></h3>
+    <h3><button type="button" class="btn btn-create">  <%= link_to "Add your own recipe!", new_recipe_path %></button></h3>
 
     <div>
       <%= form_tag cookbooks_path, method: :get do %>
@@ -38,7 +38,7 @@
             <%= recipe.diet %>
           </div>
           <div class="button_card">
-            <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <button type="button" class="btn btn-delete"> <%= link_to 'Delete this recipe', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
         <% end %>
