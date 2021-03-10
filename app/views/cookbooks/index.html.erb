@@ -1,20 +1,24 @@
-<div>
+<div class="container">
 
-  <h1>Welcome to your cookbook</h1>
-    <h3><button type="button" class="btn btn-create">  <%= link_to "Add your own recipe!", new_recipe_path %></button></h3>
-
-    <div>
-      <%= form_tag cookbooks_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "Find your recipe"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
+    <div class="h1 d-flex justify-content-center">
+      <h1>All your recipes</h1>
     </div>
 
-    <div class="card recipes_list">
+    <div class="d-flex justify-content-center">
+      <div>
+        <%= form_tag cookbooks_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "Find your recipe"
+          %>
+          <%= submit_tag "Search", class: "btn btn-create" %>
+          <button type="button" class="btn btn-create">  <%= link_to "Create recipe", new_recipe_path %></button>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center card recipes_list">
       <% @recipes.each do |recipe| %>
         <%= link_to recipe_path(recipe) do %>
         <div class="cookbook_recipe_card">
@@ -44,7 +48,6 @@
         <% end %>
       <% end %>
     </div>
-
 
 </div>
 
