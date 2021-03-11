@@ -1,4 +1,4 @@
-<h1 id="special-title"> Here you can find all your parties <%= current_user.username %> !</h1> 
+<h1 class="h1"> Here you can find all your parties <%= current_user.username %> !</h1> 
 
 <ul class ="list-group">
     <% @parties.each do |element|  %>
@@ -10,5 +10,5 @@
         <% end %>
     <% end %>
 </ul>
-<button type="button" class="btn btn-create"><%= link_to "Start party", new_party_path %>
+<button type="button" class="btn btn-create general-button"><%= link_to "Start party", new_party_path %>
 
