@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="list">
-      <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe) do %>
+      <%  @recipes.each do |recipe| %>
         <div class="recipe_card">
+          <%= link_to recipe_path(recipe) do %>
           <div class="image_mini">
             <%if recipe.picture.attached? %>
              <%= cl_image_tag recipe.picture.key %>
@@ -31,30 +31,31 @@
               <%= image_tag recipe.image %>
             <% end %>
           </div>
-          <div class="info-card container">
-            <div class="text-info">
-              <div class="name row">
-                <%= recipe.name.truncate(20) %>
+            <% end %>
+          <div class="info-card">
+            <%= link_to recipe_path(recipe) do %>
+            <div class="text-info text-truncate">
+              <div class="name text-truncate">
+                <%= recipe.name %>
               </div>
-              <div class="info row">
-                <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+              <div class="info">
+                Preparation time:<span><%= recipe.min %> min. </span>
               </div>
-              <div class="info row">
-                <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+              <div class="info">
+                Number of servings: <span><%= recipe.serving %>.prs</span>
               </div>
-              <div class="info row">
-                <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+              <div class="info">
+                <div class="text-truncate">Diet:<span> <%= recipe.diet.join(", ") %></span> </div>
               </div>
             </div>
-          <div class="button_card row">
-            <div class="btn-create col-3">
-              <%= link_to 'DELETE', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            <div class="button_card">
+              <div class="btn-create">
+                <%= link_to 'DELETE', cookbook_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
             </div>
-
           </div>
         </div>
-        </div>
-      <% end %>
       <% end %>
     </div>
 

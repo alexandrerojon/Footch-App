@@ -1,0 +1,52 @@
+.list-parties-container {
+  flex-grow: 1;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-bottom: 20px;
+}
+
+
+.list-parties {
+  margin: 10px 15px;
+  display: flex;
+  justify-content: center;
+
+  a{text-decoration: none;}
+   &:hover{
+    a{text-decoration: none;}
+  }
+}
+
+.party-info-card {
+    background: white;
+    padding: 10px;
+    margin: 5px;
+    color: $footch-teal;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    border: 1px solid $footch-light-orange;
+    width: 390px;
+    // height: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    hr{ border-top: 1px solid rgba(50,107,117,0.25)}
+
+  span{color: $footch-dark-orange;}
+
+.party-name {
+  font-size: 30px;
+  color: $footch-teal;
+  font: $brand-font;
+  margin-bottom: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bring {text-overflow: ellipsis;
+  white-space: nowrap;
+    overflow: hidden;}
+}
+
