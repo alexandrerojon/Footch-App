@@ -4,7 +4,7 @@
       <div class="signed-in">
         <div class="footch-talking">
           <p>What's in your fridge,</p>
-          <%= link_to user_path(current_user) do %>
+          <%= link_to dashboard_path do %>
           <p class="navbar-text"> <%= current_user.username.capitalize %> ?</p>
           <% end %>
         </div>

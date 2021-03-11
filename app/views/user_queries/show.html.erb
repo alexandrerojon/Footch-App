@@ -15,13 +15,13 @@
   <div class="list">
     <%  @user_query.recipes.each do |recipe| %>
       <div class="recipe_card">
-        <%= link_to recipe_path(recipe) do %>
+        <%= link_to recipe_path(recipe, params: {user_query_id: @user_query.id}) do %>
         <div class="image_mini">
           <%= image_tag recipe.image unless recipe.image.nil?  %>
         </div>
           <% end %>
         <div class="info-card">
-          <%= link_to recipe_path(recipe) do %>
+          <%= link_to recipe_path(recipe, params: {user_query_id: @user_query.id}) do %>
           <div class="text-info text-truncate">
             <div class="name text-truncate">
               <%= recipe.name %>
