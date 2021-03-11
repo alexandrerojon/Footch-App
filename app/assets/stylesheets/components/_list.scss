@@ -28,6 +28,7 @@
   font: $brand-font;
   color: $footch-green;
   justify-content: flex-start;
+
 }
 
 
@@ -66,15 +67,16 @@
   }
 
   .info-card {
-    min-height: 100%;
     font: $brand-font;
+    overflow: hidden;
+    height: 150px;
+    align-items: normal;
     a {
       text-decoration: none;
       // display: flex;
       // flex-direction: column;
       // justify-content: space-around;
       min-height: 100%;
-      align-content: space-between;
     }
   }
 
@@ -82,7 +84,9 @@
     // display: flex;
     // flex-direction: column;
     // justify-content: space-around;
-    min-height: 100%;
+    // min-height: 100%;
+    span{color: $footch-light-orange;}
+
 
   }
 
@@ -91,8 +95,7 @@
   .name {
     font-size: 20px;
     color: $footch-teal;
-    margin-bottom: 10px;
-    overflow-wrap: break-word;
+    margin-bottom: 13px;
   }
 
   .info {
@@ -100,18 +103,16 @@
     font-size: 10px;
     color: $footch-teal;
     align-items: baseline;
-    strong {
-      font: $brand-font-light;
-      color: $footch-light-orange;
-      margin-left: 3px;
-      margin-bottom: 5px;
-    }
+    margin-left: 3px;
+    margin-bottom: 7px;
   }
 
   .button_card{
     // display: flex;
-    justify-content: start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-top: 10px;
+
 
     .btn-create{
       font-size: 8px;

@@ -1,38 +1,58 @@
 <h1> Dashboard of <%= current_user.username %></h1>
 <div class= "general-button">
-<h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
-<h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
+  <h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
+  <h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
 </div>
-<h2> Parties you created </h2>
-
-<ul class ="list-group">
-    <% current_user.created_parties. each do |party|%>
-        <%= link_to party_path(party) do %>
-        <li class="list-group-item btn-create" id="create_party">
-            <%= party.name %>
-            <%= party.date %>
-          
-        </li>
-        <% end %>
-        
+<h2> Created Parties </h2>
+<div class ="list-parties-container">
+  <% current_user.created_parties. each do |party|%>
+  <div class ="list-parties">
+    <%= link_to party_path(party) do %>
+      <div class="party-info-card">
+        <div class="party-name">
+          <%= party.name.capitalize %>
+        </div>
+        <hr>
+        <div class="party-date">
+          <span> Date of the event: </span> <%= party.date %>
+        </div>
+        <div class="party-count">
+          <span>Attending: </span><%= party.user_parties.where(status: "attending").count %>
+        </div>
+        <div class="bring">
+          <span>Whats on the menu: </span><%= party.party_ingredients.map { |ingredient| ingredient.name }.to_sentence%>.
+        </div>
+      </div>
     <% end %>
-</ul>
+  </div>
+  <% end %>
+</div>
 
 
-<h2>Parties you joined </h2>
-<ul class ="list-group ">
-<% current_user.parties.each do |member| %>
-    <%= link_to party_path(member) do %>
-        <li class="list-group-item btn-create" id="create_party">
-            <%= member.name %>
-            <%= member.date %>
-            <br>
-        </li>
-    <% end %>
- 
-<% end %>
-</ul>
-
+<h2>Joined Parties</h2>
+<div class ="list-parties-container">
+  <% current_user.parties.each do |party| %>
+    <div class ="list-parties">
+      <%= link_to party_path(party) do %>
+        <div class="party-info-card">
+          <div class="party-name">
+            <%= party.name.capitalize %>
+          </div>
+          <hr>
+          <div class="party-date">
+            <span> Date of the event:</span> <%= party.date %>
+          </div>
+          <div class="party-count">
+            <span> Attending:</span> <%= party.user_parties.where(status: "attending").count %>
+          </div>
+          <div class="bring">
+           <span> Whats on the menu:</span> <%= party.party_ingredients.map { |ingredient| ingredient.name }.to_sentence%>.
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 
 

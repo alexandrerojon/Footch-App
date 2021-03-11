@@ -8,7 +8,6 @@ class PagesController < ApplicationController
     @recipes = current_user.created_recipes
     @cookbook = current_user.recipes
     @user_queries = current_user.user_queries
-
   end
 
   private
@@ -16,5 +15,5 @@ class PagesController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  
+
 end
