@@ -5,7 +5,11 @@ class CookbooksController < ApplicationController
     @cookbook.user_id = current_user[:id]
     @cookbook.recipe_id = params[:recipe_id]
     @cookbook.save!
-    redirect_to cookbooks_path, notice: "The recipe was added to your cookbook!"
+    if params[:user_query_id].present?
+      redirect_to user_query_path(params[:user_query_id]), notice: "The recipe was added to your cookbook!"
+    else
+      redirect_to cookbooks_path, notice: "The recipe was added to your cookbook!"
+    end
   end
 
   def index

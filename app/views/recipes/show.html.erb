@@ -4,7 +4,7 @@
     <h1 class="h1"><%= @recipe.name %></h1>
 
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
+      <button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe, params:{user_query_id: params[:user_query_id]}), method: :post  %>
       <button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
     </div>
     <br>
