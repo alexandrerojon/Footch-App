@@ -1,39 +1,59 @@
 
+<div class="container">
 
-<h1><%= @recipe.name %></h1>
-<% if @recipe.picture.attached? %>
-  <%=  cl_image_tag @recipe.picture.key %>
-<% else %>
-  <%= image_tag @recipe.image %>
-<% end %>
-<p><strong><%= @recipe.serving %></strong></p>
-<p><strong><%= @recipe.min %></strong></p>
-<h6>Diet</h6>
-<% if @recipe.diet == [] %>
-  <p>Diet: none</p>
-<% else %>
-  <% @recipe.diet.each do |diet| %>
-    <%= diet %>
-  <% end %>
-<% end %>
+    <h1 class="h1"><%= @recipe.name %></h1>
 
-<h3>Ingredients</h3>
-<ul>
-  <% @recipe.ingredients_list.each do |ingredient| %>
-    <li><%= ingredient %></li>
-  <% end %>
-</ul>
-<h3>Instructions</h3>
-<ol>
-  <% @recipe.steps.each do |step| %>
-    <li><%= step %></li>
-  <% end %>
-</ol>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
+      <button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
+    </div>
+    <br>
+    <% if @recipe.picture.attached? %>
+      <%= cl_image_tag @recipe.picture.key %>
+    <% else %>
+      <%= image_tag @recipe.image %>
+    <% end %>
+    </div>
 
-<% if params[:user_query_id].present? %>
-  <%= link_to'All recipes', user_query_path(params[:user_query_id]) %>
-<% end %>
+  <div class="recipe-show-page">
+    <div class="recipe-informations">
+      <div class="ingredients-listings">
+        <h3>Information</h3>
+        <ul>
+          <li class="list-group-item list-group-item-light"><strong>Serving :  </strong><%=@recipe.serving%> </li>
+          <li class="list-group-item list-group-item-light"><strong>Minutes :  </strong><%=@recipe.min%> </li>
+          <% if @recipe.diet == [] %>
+              <li class="list-group-item list-group-item-light"><strong>Diet :  </strong>none</li>
+            <% else %>
+              <% @recipe.diet.each do |diet| %>
+               <li class="list-group-item list-group-item-light"><strong>Diet :  </strong> <%= diet %></li>
+              <% end %>
+            <% end %>
+        </ul>
+      </div>
 
-<button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
+      <div class="ingredients-listings">
+        <h3>Ingredients</h3>
+        <ul>
+          <% @recipe.ingredients_list.each do |ingredient| %>
+          <li class="list-group-item list-group-item-light"><%= ingredient %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
-<button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
+
+
+    <div>
+      <h3>Instructions</h3>
+      <ol>
+        <% @recipe.steps.each do |step| %>
+        <li><%= step %></li>
+        <% end %>
+      </ol>
+      <% if params[:user_query_id].present? %>
+       <button type="button" class="btn btn-create"><%= link_to'back to all recipes', user_query_path(params[:user_query_id]) %></button>
+      <% end %>
+    </div>
+  </div>
+</div>

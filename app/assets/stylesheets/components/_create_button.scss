@@ -10,7 +10,7 @@
     transition: 0.5s;
     font-family: $brand-font;
     display: flex;
-    align-items: center
+    align-items: center;
 
   }
 
@@ -43,6 +43,30 @@
     }
   }
 
+  #search-button{
+    color: $footch-light-orange;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 10px;
+    border: 1px solid;
+    border-color: $footch-light-orange;
+    background: white;
+    transition: 0.5s;
+    font-family: $brand-font;
+    display: flex;
+    align-items: center
+
+
+  }
+  
+  #find-button{
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+
+  }
+ 
   #create_party {
     color: $footch-light-orange;
     margin: 5px;
@@ -53,3 +77,4 @@
       a{text-decoration: red;}
     }
   }
+

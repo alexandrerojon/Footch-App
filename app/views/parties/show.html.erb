@@ -1,9 +1,6 @@
 <% content_for :meta_title, "#{@party.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, "#{@party.name} on the #{@party.date}"  %>
 
-
-
-
   <% if @user_party.status == "pending"%>
     <div class="pending-participants row justify-content-md-center">
       <p><%= @party.user.username %> invited you to <%= @party.name %></p>
@@ -16,158 +13,161 @@
   <% end %>
 
 <div class="container px-4">
-  <div class="class row gy-5">
-    <div class="card col-6">
-      <div class="party-show">
-        <h1><%= @party.name %></h1>
-        <h4><%= @party.date %></h4>
-        <p> by: <%= link_to @party.user.username, user_path(@party.user) %></p>
-      </div>
+  <div class="row">
+    <div class="ingredients-friends col-6">
+      <div class="card" id="party-card">
+        <div class="party-show">
+          <h1><%= @party.name %></h1>
+          <h4><%= @party.date %></h4>
+          <p> by: <span class="party-creator"><%= link_to @party.user.username, user_path(@party.user) %></span></p>
+        </div>
+        <div class="ingredients-per-user">
+          <h6><strong><u>Who is bringing what?:</u></strong></h6>
+          <div class="scroll">
+            <% @party.user_parties.each do |user_party| %>
+              <% next if user_party.status == "not attending" %>
 
-      <div class="ingredients-per-user">
-        <h6><strong><u>Who is bringing what?:</u></strong></h6>
-        <% @party.user_parties.each do |user_party| %>
-          <% next if user_party.status == "not attending" %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <span class="party-name"><%= user_party.user.username %> : </span >
-                <% if %>
-                  <% user_party.party_ingredients.empty? %>
-                   <p><% user_party.user.username %> hasn't added anything yet!</p>
-                   <% else %>
-                    <% user_party.party_ingredients.each do |party_ingredient| %>
-                      <span class="party-ingredient"><%= party_ingredient.name %></span>
-                        <%= link_to party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
-                        <i class="fas fa-times-circle"></i>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <span class="party-name"><%= user_party.user.username %> : </span >
+                    <% if %>
+                      <% user_party.party_ingredients.empty? %>
+                       <span><% user_party.user.username %> hasn't added anything yet!</span>
+                       <% else %>
+                        <% user_party.party_ingredients.each do |party_ingredient| %>
+                          <span class="party-ingredient"><%= party_ingredient.name %></span>
+                            <%= link_to party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                            <i class="fas fa-times-circle"></i>
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
-            </li>
-          </ul>
-        <% end %>
-        <% if @user_party.status == "attending" %>
-          <div class="form">
-            <h6 class="card-title"><strong><u>Tell us what ingredients you're bringing below:</u></strong></h6>
-            <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
-              <%= f.input :name, label: false %>
-              <%= f.submit "Add ingredient", class: "btn btn-add" %>
-              <button type="button" class="btn btn-add"><%= link_to "Get recipes", party_party_recipes_path(@party), method: :post %>
-              <% if check_authorized_user(@party, current_user) %>
-              <button type="button" class="btn btn-delete"> <%= link_to 'Delete party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %>
+                </li>
+              </ul>
             <% end %>
           </div>
-         <% end %>
+          <% if @user_party.status == "attending" %>
+            <div class="form">
+              <h6 class="card-title"><strong><u>Tell us what ingredients you're bringing below:</u></strong></h6>
+              <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
+                <%= f.input :name, label: false %>
+                <%= f.submit "Add ingredient", class: "btn btn-add" %>
+                <button type="button" class="btn btn-delete"><%= link_to "Get recipes", party_party_recipes_path(@party), method: :post %>
+                <% if check_authorized_user(@party, current_user) %>
+                <button type="button" class="btn btn-delete"> <%= link_to 'Delete party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              <% end %>
+            </div>
+           <% end %>
+        </div>
 
+
+
+    </div>
+    <br>
+
+
+      <div class="card" id="card-friends">
+        <div class="user-add">
+          <h3>Party Friends</h3>
+          <% if check_authorized_user(@party, current_user) %>
+            <%= simple_form_for([@party, @new_user_party]) do |f| %>
+              <p> find your friends by their username below </p>
+              <%= f.association :user, collection: User.all, label: false, label_method: :username, input_method: :id, prompt: "Select a friend", input_html: { class: 'select2' } %>
+              <%#= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
+              <%= f.submit "Add friend", class: "btn btn-add" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="user-display">
+          <div class="user-status" id="attending">
+            <ul>
+              <h6>Attending</h6>
+            <% @party.user_parties.each do |user_party| %>
+              <li><%= user_party.user.username if user_party.status == "attending"%></li>
+            <% end %>
+            </ul>
+          </div>
+          <div class="user-status" id="not-attending">
+            <ul>
+            <h6>Not attending</h6>
+            <% @party.user_parties.each do |user_party| %>
+              <li><%= user_party.user.username if user_party.status == "not attending"%></li>
+            <% end %>
+            </ul>
+          </div>
+          <div class="user-status">
+            <ul>
+            <h6>Pending</h6>
+            <% @party.user_parties.each do |user_party| %>
+              <li><%= user_party.user.username if user_party.status == "pending"%></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-      <div class="card col-6">
+
+    <div class="card col-6" id="chatbox-card">
       <div class="chatbox">
         <div id="messages" data-party-id="<%= @party.id %>">
           <% @party.messages.each do |message| %>
             <%= render "messages/message", message: message %>
           <% end %>
         </div>
-
-        <%= simple_form_for [ @party, @message ], remote: true do |f| %>
-          <%= f.input :content, label: false, placeholder: "Message ##{@party.name}" %>
-          <%= f.submit "Send", class: "btn btn-get-recipes" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <div class="class row gy-5">
-    <div class="card col-6">
-      <div class="user-add">
-        <h3>Party Friends</h3>
-        <% if check_authorized_user(@party, current_user) %>
-          <%= simple_form_for([@party, @new_user_party]) do |f| %>
-            <p> find your friends by their username below </p>
-            <%= f.association :user, collection: User.all, label: false, label_method: :username, input_method: :id, prompt: "Select a friend", input_html: { class: 'select2' } %>
-            <%#= f.input :user_id, label: false, collection: User.all.map {|user| [user.username, user.id]}, as: :select, input_html: { class: 'select2' } %>
-            <%= f.submit "Add friend", class: "btn btn-add" %>
+        <div class="send-message">
+          <%= simple_form_for [ @party, @message ], remote: true do |f| %>
+            <%= f.input :content, label: false, placeholder: "Message ##{@party.name}" %>
+            <%= f.submit "Send", class: "btn btn-get-recipes" %>
           <% end %>
-        <% end %>
-      </div>
-
-      <div class="user-display">
-        <div class="user-status">
-          <h5>Attending</h5>
-          <ul>
-          <% @party.user_parties.each do |user_party| %>
-            <li><%= user_party.user.username if user_party.status == "attending"%></li>
-          <% end %>
-        </ul>
-      </div>
-
-         <div class="user-status">
-          <h5>Not attending</h5>
-          <ul>
-          <% @party.user_parties.each do |user_party| %>
-            <li><%= user_party.user.username if user_party.status == "not attending"%></li>
-          <% end %>
-        </ul>
-      </div>
-
-         <div class="user-status">
-          <h5>Pending</h5>
-          <ul>
-          <% @party.user_parties.each do |user_party| %>
-            <li><%= user_party.user.username if user_party.status == "pending"%></li>
-          <% end %>
-        </ul>
-      </div>
-
-    </div>
-    </div>
-
-    <div class="party_recipes_list col-6">
-      <% @party.party_recipes.each do |party_recipe| %>
-      <% recipe = party_recipe.recipe %>
-      <%= link_to recipe_path(recipe) do %>
-        <div class="recipe_card">
-          <div class="image_mini">
-            <%= image_tag recipe.image %>
-          </div>
-
-          <div class="info-card container">
-
-            <div class="text-info">
-              <div class="name row">
-                <%= recipe.name.truncate(20) %>
-              </div>
-              <div class="info row">
-                <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
-              </div>
-              <div class="info row">
-                <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
-              </div>
-              <div class="info row">
-                <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
-              </div>
-            </div>
-
-            <div class="button_card row">
-              <div class="vote_num col-3">
-                <%= party_recipe.votes_for.size %>
-              </div>
-              <div class="btn-create col-3">
-                <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
-              </div>
-              <div class="btn-create col-3">
-                <%= link_to "DELETE", party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </div>
-
-          </div>
         </div>
-      <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
+
+
+      <div class="fucking-recipes">
+        <% @party.party_recipes.each do |party_recipe| %>
+        <div class="class fucking-recipe">
+          <% recipe = party_recipe.recipe %>
+          <%= link_to recipe_path(recipe) do %>
+              <div class="recipe_card">
+              <div class="image_mini">
+                <%= image_tag recipe.image %>
+              </div>
+              <div class="info-card container">
+                <div class="text-info">
+                  <div class="name row">
+                    <%= recipe.name.truncate(20) %>
+                  </div>
+                  <div class="info row">
+                    <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+                  </div>
+                  <div class="info row">
+                    <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+                  </div>
+                  <div class="info row">
+                    <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+                  </div>
+                </div>
+                <div class="button_card row">
+                  <div class="vote_num col-3">
+                    <%= party_recipe.votes_for.size %>
+                  </div>
+                  <div class="btn-create col-3">
+                    <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
+                  </div>
+                  <div class="btn-create col-3">
+                    <%= link_to "DELETE", party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
 </div>
 
 
