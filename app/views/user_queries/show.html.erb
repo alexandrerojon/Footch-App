@@ -4,53 +4,49 @@
   <% if @user_query.nil?  %>
     <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
   <% else %>
-  <div class="d-flex justify-content-center">
-    <%= simple_form_for(:filter, url: user_query_path(@user_query), method: :get) do |f| %>
-      <%= f.input :diet, as: :select, collection: Recipe.diets(@user_query), input_html: { class: "select2" } %>
-      <%= f.submit "Select diet", class: "btn btn-create", id: "search-button" %>
+    <div class="d-flex justify-content-center">
+      <%= simple_form_for(:filter, url: user_query_path(@user_query), method: :get) do |f| %>
+        <%= f.input :diet, as: :select, collection: Recipe.diets(@user_query), input_html: { class: "select2" } %>
+        <%= f.submit "Select diet", class: "btn btn-create", id: "search-button" %>
+        <% end %>
+    </div>
+  <% end %>
+
+  <div class="list">
+    <%  @user_query.recipes.each do |recipe| %>
+      <div class="recipe_card">
+        <%= link_to recipe_path(recipe) do %>
+        <div class="image_mini">
+          <%= image_tag recipe.image unless recipe.image.nil?  %>
+        </div>
+          <% end %>
+        <div class="info-card">
+          <%= link_to recipe_path(recipe) do %>
+          <div class="text-info text-truncate">
+            <div class="name text-truncate">
+              <%= recipe.name %>
+            </div>
+            <div class="info">
+              Preparation time:<span><%= recipe.min %> min. </span>
+            </div>
+            <div class="info">
+              Number of servings: <span><%= recipe.serving %>.prs</span>
+            </div>
+            <div class="info">
+              <div class="text-truncate">Diet:<span> <%= recipe.diet.join(", ") %></span> </div>
+            </div>
+          </div>
+          <% end %>
+          <div class="button_card">
+            <div class="btn-create">
+              <%= link_to "MORE", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
+            </div>
+            <div class="btn-create">
+              <%= link_to 'SAVE', recipe_cookbooks_path(recipe), method: :post  %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-  
-  <% if @user_query.nil?  %>
-  <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
-<% else %>
-<div class="list">
-  <%  @user_query.recipes.each do |recipe| %>
-    <div class="recipe_card">
-      <%= link_to recipe_path(recipe) do %>
-
-      <div class="image_mini">
-        <%= image_tag recipe.image unless recipe.image.nil?  %>
-      </div>
-
-        <% end %>
-      <div class="info-card">
-        <%= link_to recipe_path(recipe) do %>
-        <div class="text-info text-truncate">
-          <div class="name text-truncate">
-            <%= recipe.name %>
-          </div>
-          <div class="info">
-            Preparation time:<span><%= recipe.min %> min. </span>
-          </div>
-          <div class="info">
-            Number of servings: <span><%= recipe.serving %>.prs</span>
-          </div>
-          <div class="info">
-            <div class="text-truncate">Diet:<span> <%= recipe.diet.join(", ") %></span> </div>
-          </div>
-        </div>
-        <% end %>
-        <div class="button_card">
-          <div class="btn-create">
-            <%= link_to "MORE", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
-          </div>
-          <div class="btn-create">
-            <%= link_to 'SAVE', recipe_cookbooks_path(recipe), method: :post  %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <% end %>
 </div>
