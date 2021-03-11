@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   display: flex;
   padding: 10px;
+  justify-content: center;
 
 }
 
@@ -77,6 +78,7 @@
       align-content: space-between;
     }
   }
+
 
   .text-info {
     // display: flex;
