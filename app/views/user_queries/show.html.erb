@@ -1,43 +1,55 @@
 
-<h1 class="h1"> List of user's recipes </h1>
 
-<% if @user_query.nil?  %>
-  <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
-<% else %>
-<div class="list">
-  <%  @user_query.recipes.each do |recipe| %>
-  <%= link_to recipe_path(recipe) do %>
-    <div class="recipe_card">
-      <div class="image_mini">
-        <%= image_tag recipe.image unless recipe.image.nil?  %>
-      </div>
-      <div class="info-card container">
-        <div class="text-info">
-          <div class="name row">
-            <%= recipe.name.truncate(20) %>
+<div class="container">
+  <h1 class="h1"> Check out what we found: </h1>
+  <% if @user_query.nil?  %>
+    <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
+  <% else %>
+
+
+  <div>
+    <%= simple_form_for(:filter, url: user_query_path(@user_query), method: :get) do |f| %>
+      <%= f.input :diet, as: :select, collection: Recipe.diets(@user_query), input_html: { class: "select2" } %>
+      <%= f.submit %>
+    <% end %>
+
+  </div>
+
+
+  <div class="list d-flex justify-content-center">
+    <%  @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe) do %>
+      <div class="recipe_card">
+        <div class="image_mini">
+          <%= image_tag recipe.image unless recipe.image.nil?  %>
+        </div>
+        <div class="info-card container">
+          <div class="text-info">
+            <div class="name row">
+              <%= recipe.name.truncate(20) %>
+            </div>
+            <div class="info row">
+              <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+            </div>
+            <div class="info row">
+              <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+            </div>
+            <div class="info row">
+              <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+            </div>
           </div>
-          <div class="info row">
-            <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
-          </div>
-          <div class="info row">
-            <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
-          </div>
-          <div class="info row">
-            <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+          <div class="button_card row">
+            <div class="btn-create col-3">
+              <%= link_to "MORE", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
+            </div>
+            <div class="btn-create col-3">
+              <%= link_to 'SAVE', recipe_cookbooks_path(recipe), method: :post  %>
+            </div>
           </div>
         </div>
-        <div class="button_card row">
-          <div class="btn-create col-3">
-            <%= link_to "MORE", recipe_path(recipe, params: {user_query_id: @user_query.id})%>
-          </div>
-          <div class="btn-create col-3">
-            <%= link_to 'SAVE', recipe_cookbooks_path(recipe), method: :post  %>
-          </div>
-        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+    <% end %>
+  </div>
   <% end %>
 </div>
-<% end %>
-

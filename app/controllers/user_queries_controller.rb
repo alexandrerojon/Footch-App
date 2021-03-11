@@ -43,7 +43,11 @@ class UserQueriesController < ApplicationController
   end
 
   def show
-      @user_query = UserQuery.find(params[:id])
+    @user_query = UserQuery.find(params[:id])
+    @recipes = @user_query.recipes
+    if params[:filter].present?
+      @recipes = @recipes.select{ |recipe| recipe.diet.include?(params[:filter][:diet]) }
+    end
   end
 
   def index

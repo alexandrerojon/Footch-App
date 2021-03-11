@@ -2,38 +2,38 @@
 
 <h1><%= @recipe.name %></h1>
 <% if @recipe.picture.attached? %>
-  <%=  cl_image_tag @recipe.picture.key %>
+<%=  cl_image_tag @recipe.picture.key %>
 <% else %>
-  <%= image_tag @recipe.image %>
+<%= image_tag @recipe.image %>
 <% end %>
 <p><strong><%= @recipe.serving %></strong></p>
 <p><strong><%= @recipe.min %></strong></p>
 <h6>Diet</h6>
 <% if @recipe.diet == [] %>
-  <p>Diet: none</p>
+<p>Diet: none</p>
 <% else %>
-  <% @recipe.diet.each do |diet| %>
-    <%= diet %>
-  <% end %>
+<% @recipe.diet.each do |diet| %>
+<%= diet %>
+<% end %>
 <% end %>
 
 <h3>Ingredients</h3>
 <ul>
   <% @recipe.ingredients_list.each do |ingredient| %>
-    <li><%= ingredient %></li>
+  <li><%= ingredient %></li>
   <% end %>
 </ul>
 <h3>Instructions</h3>
 <ol>
   <% @recipe.steps.each do |step| %>
-    <li><%= step %></li>
+  <li><%= step %></li>
   <% end %>
 </ol>
 
 <% if params[:user_query_id].present? %>
-  <%= link_to'All recipes', user_query_path(params[:user_query_id]) %>
+<%= link_to'All recipes', user_query_path(params[:user_query_id]) %>
 <% end %>
 
 <button type="button" class="btn btn-create"><%= link_to 'Save to my cookbook', recipe_cookbooks_path(@recipe), method: :post  %>
 
-<button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
+  <button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
