@@ -1,8 +1,8 @@
 class UsermailerMailer < ApplicationMailer
   def invitation
 
-    @user = User.find_by(params[:id])
-    @party = Party.find_by(params[:user_id])
+    @user = params[:user]
+    @party = params[:party]
     mail(to: @user.email, subject: "You were invited in the party of #{@party.user.username} !")
   end
 end

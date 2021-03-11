@@ -1,4 +1,4 @@
-<h1> Dashboard of <%= current_user.username %></h1>
+<h1 class= "h1"> Dashboard of <%= current_user.username %></h1>
 <div class= "general-button">
 <h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
 <h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
@@ -11,15 +11,15 @@
         <li class="list-group-item btn-create" id="create_party">
             <%= party.name %>
             <%= party.date %>
-          
+
         </li>
         <% end %>
-        
+
     <% end %>
 </ul>
 
 
-<h2>Parties you joined </h2>
+<h2>Parties you've joined </h2>
 <ul class ="list-group ">
 <% current_user.parties.each do |member| %>
     <%= link_to party_path(member) do %>
@@ -29,22 +29,20 @@
             <br>
         </li>
     <% end %>
- 
+
 <% end %>
 </ul>
 
 
-
-
-<h2> How many recipes did you create ? </h2>
+<h2> How many recipes have you created? </h2>
     <li class="list-group-item" >
         <%= @recipes.count %>
     </li>
-<h2> How many recipes in your cookbook </h2>
+<h2> How many recipes are in your cookbook? </h2>
     <li class="list-group-item" >
         <%= @cookbook.count %>
     </li>
-<h2> How many recipes did you look for? </h2>
+<h2> How many recipes have you looked for? </h2>
     <li class="list-group-item" >
         <%= @user_queries.count %>
     </li>

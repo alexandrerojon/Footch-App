@@ -17,6 +17,11 @@ class Recipe < ApplicationRecord
   }
 
 
+  def self.diets(user_query)
+    diets = user_query.recipes.flat_map { |recipe| recipe.diets }.uniq.map(&:downcase)
+    p diets
+  end
+
   def image
     self.ingredients["image"]
   end
