@@ -1,7 +1,8 @@
+
 .card {
   padding: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
-
+  margin: 15px;
 }
 
 #card-body{
@@ -17,10 +18,8 @@
   margin: 20px;
 }
 
-.card-friends {
-  padding: 10px;
-  max-height: 100px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+#card-friends {
+  margin-left: 47px;
 }
 
 .user-add {
@@ -113,17 +112,6 @@ hr {
   color: rgba(50,107,117,0.25)
 }
 
-#chatbox-card {
-  max-height: 516px;
-}
-
-.chatbox {
-  max-height: 516px;
-}
-
-#party-card {
-  max-height: 546px;
-}
 
 .scroll {
   height: 154px;
@@ -133,6 +121,8 @@ hr {
 }
 
 #messages {
+  text-align: left;
+  margin-left: 8px;
   height: 370px;
   overflow: auto;
   overflow-y: scroll;
