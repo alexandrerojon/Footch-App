@@ -3,7 +3,37 @@
   <h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
   <h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
 </div>
-<h2> Created Parties </h2>
+
+<div class="dash-count">
+  <div class="created-count">
+    <div class="name-count">
+      Created
+    </div>
+    <div class="num-count" >
+      <%= @recipes.count %>
+    </div>
+  </div>
+  <div class="cookbook-count">
+    <div class="name-count">
+      Cookbook
+    </div>
+    <div class="num-count" >
+      <%= @cookbook.count %>
+    </div>
+  </div>
+  <div class="looked-count">
+    <div class="name-count">
+      Looked
+    </div>
+    <div class="num-count" >
+      <%= @user_queries.count %>
+    </div>
+  </div>
+</div>
+<div class="title-dash">
+  <p> Created Parties </p>
+</div>
+<hr>
 <div class ="list-parties-container">
   <% current_user.created_parties. each do |party|%>
   <div class ="list-parties">
@@ -27,7 +57,10 @@
   </div>
   <% end %>
 </div>
-<h2>Joined Parties</h2>
+<div class="title-dash">
+  <p> Joined Parties </p>
+</div>
+<hr>
 <div class ="list-parties-container">
   <% current_user.parties.each do |party| %>
     <div class ="list-parties">
@@ -51,17 +84,5 @@
     </div>
   <% end %>
 </div>
-<h2> How many recipes have you created? </h2>
-    <li class="list-group-item" >
-        <%= @recipes.count %>
-    </li>
-<h2> How many recipes are in your cookbook? </h2>
-    <li class="list-group-item" >
-        <%= @cookbook.count %>
-    </li>
-<h2> How many recipes have you looked for? </h2>
-    <li class="list-group-item" >
-        <%= @user_queries.count %>
-    </li>
 
 
