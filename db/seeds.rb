@@ -7,10 +7,10 @@ Party.destroy_all
 User.destroy_all
 
 
-users = User.create!([{email: "allison@gmail.com", username: "teacup", password: "123456"},
-{email: "arthur@gmail.com", username: "katemossloverboy" , password: "123456"},
-{email: "alexandre@gmail.com", username: "alexthetrex" , password: "123456"},
-{email: "sebastien@gmail.com", username: "seboche" , password: "123456"}])
+users = User.create!([{email: "allisonsesse@gmail.com", username: "teacup", password: "123456"},
+{email: "arthurbary@gmail.com", username: "katemoss_loverboy" , password: "123456"},
+{email: "alexandre.rojon@gmail.com", username: "alexthetrex" , password: "123456"},
+{email: "sebastien.dathdelcambe@gmail.com", username: "seboche" , password: "123456"}])
 
 
 ingredient = {
