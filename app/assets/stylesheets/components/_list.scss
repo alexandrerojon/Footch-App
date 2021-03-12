@@ -4,7 +4,6 @@
   display: flex;
   padding: 10px;
   justify-content: center;
-
 }
 
 .party_recipes_list {
@@ -15,6 +14,7 @@
 .recipes_list {
   flex-wrap: wrap;
 }
+
 .recipe_card {
   overflow: hidden;
   width: 390px;
@@ -46,40 +46,42 @@
   font: $brand-font;
   color: $footch-green;
 
-  a{text-decoration: none;
-  color: $txt-important;
-  font: $brand-font}
+  a{
+    text-decoration: none;
+    color: $txt-important;
+    font: $brand-font;
+  }
 }
 
 
-  .image_mini {
-    padding: 5px;
+.image_mini {
+  padding: 5px;
 
-    img {
-      height: 150px;
-      width: 150px;
-      object-fit: cover;
-      overflow: hidden;
-      border: 1px solid $footch-teal;
-      border-radius: 3px;
-      margin-right: 10px;
-
-    }
-  }
-
-  .info-card {
-    font: $brand-font;
-    overflow: hidden;
+  img {
     height: 150px;
-    align-items: normal;
-    a {
-      text-decoration: none;
+    width: 150px;
+    object-fit: cover;
+    overflow: hidden;
+    border: 1px solid $footch-teal;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+}
+
+.info-card {
+  font: $brand-font;
+  overflow: hidden;
+  height: 150px;
+  align-items: normal;
+
+  a {
+    text-decoration: none;
       // display: flex;
       // flex-direction: column;
       // justify-content: space-around;
       min-height: 100%;
-    }
   }
+}
 
 
   .text-info {
@@ -87,9 +89,9 @@
     // flex-direction: column;
     // justify-content: space-around;
     // min-height: 100%;
-    span{color: $footch-light-orange;}
-
-
+    span{
+      color: $footch-light-orange;
+    }
   }
 
 
@@ -114,15 +116,24 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 10px;
-
-
-    .btn-create{
-      font-size: 8px;
-      justify-content: space-evenly;
-      margin-right: 10px;
-    }
-
   }
+
+
+
+  .button_card_party{
+    // display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+  }
+
+
+  .btn-create{
+    font-size: 8px;
+    justify-content: space-evenly;
+    margin-right: 10px;
+  }
+
 
 
 
@@ -148,11 +159,15 @@
     display: inline-block;
     text-align: center;
 
-       a{text-decoration: none;
-      color: $brand-pink;}
-  &:hover{
-    a{text-decoration: none;
-      color: $brand-yellow;}
+    a{
+      text-decoration: none;
+      color: $brand-pink;
+    }
+    &:hover{
+      a{
+        text-decoration: none;
+        color: $brand-yellow;
+      }
     }
   }
 
