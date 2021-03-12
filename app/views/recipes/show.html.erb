@@ -8,11 +8,13 @@
       <button type="button" class="btn btn-create"><%= link_to 'My cookbook', cookbooks_path %>
     </div>
     <br>
-    <% if @recipe.picture.attached? %>
-      <%= cl_image_tag @recipe.picture.key %>
-    <% else %>
-      <%= image_tag @recipe.image %>
-    <% end %>
+
+    <div class="image_large">
+      <% if @recipe.picture.attached? %>
+        <%= cl_image_tag @recipe.picture.key %>
+      <% else %>
+        <%= image_tag @recipe.image %>
+      <% end %>
     </div>
 
   <div class="recipe-show-page">
