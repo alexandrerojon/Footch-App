@@ -1,17 +1,18 @@
 <% content_for :meta_title, "#{@party.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, "#{@party.name} on the #{@party.date}"  %>
 
+<div class="invitation">
   <% if @user_party.status == "pending"%>
     <div class="pending-participants row justify-content-md-center">
       <p><%= @party.user.username %> invited you to <%= @party.name %></p>
-      <div> <%= simple_form_for [@party, @user_party], html: { class: 'form-inline' } do |f| %>
-        <%= f.input :status, label: false, collection: UserParty::STATUS %>
+      <div class="invite"> <%= simple_form_for [@party, @user_party], html: { class: 'form-inline' } do |f| %>
+        <%= f.input :status, input_html: { class: "box" }, label: false, collection: UserParty::STATUS %>
         <%= f.submit "Submit", :class => "btn btn-get-recipes"%>
         <% end %>
       </div>
     </div>
   <% end %>
-
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="card col-sm-12 col-lg-6" id="party-card">

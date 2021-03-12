@@ -12,6 +12,7 @@
 .user-display {
   margin-bottom: 40px;
 
+
 }
 
 .party-show {
@@ -129,3 +130,30 @@ hr {
   scrollbar: $footch-teal;
   scrollbar-width: thin;
 }
+
+.invitation {
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  margin: 15px;
+
+}
+
+.pending-participants {
+  position: relative;
+  margin-left: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pending-participants > p {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.box {
+border: 0;
+outline:none;
+}
+
