@@ -56,7 +56,7 @@ class PartyRecipesController < ApplicationController
     if @party_recipe.party.users.include?(current_user)
       @party_recipe.liked_by current_user
     end
-    redirect_to party_path(@party_recipe.party)
+    redirect_to party_path(@party_recipe.party, anchor: "vote-recipe-#{@party_recipe.id}")
   end
 
   private

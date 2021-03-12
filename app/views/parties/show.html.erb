@@ -151,9 +151,12 @@
                   <div class="vote_num col-3">
                     <%= party_recipe.votes_for.size %>
                   </div>
-                  <div class="btn-create col-3">
-                    <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post %>
-                  </div>
+                  
+                    <div class="btn-create col-3" id="vote-recipe-<%= party_recipe.id %>">
+                    <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post, remote: true %>
+                    </div>
+                 
+
                   <div class="btn-create col-3">
                     <%= link_to "DELETE", party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
                   </div>
