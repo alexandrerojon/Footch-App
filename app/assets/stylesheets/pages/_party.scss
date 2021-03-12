@@ -95,7 +95,7 @@ h6 {
   text-decoration: underline;
 }
 
-.fucking-recipes {
+.partying-recipes {
   flex-grow: 1;
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -103,7 +103,7 @@ h6 {
   margin-bottom: 20px;
 }
 
-.fucking-recipe {
+.partying-recipe {
   margin: 10px 15px;
   display: flex;
   justify-content: center;
@@ -157,3 +157,36 @@ border: 0;
 outline:none;
 }
 
+.button_card_party{
+  // display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 10px;
+
+
+  .btn-create{
+    font-size: 8px;
+    justify-content: space-evenly;
+    margin-right: 10px;
+  }
+
+}
+
+#vote-btn {
+ font-size: 12px;
+  background-color: white;
+  padding: 5px 5px;
+  color: $footch-teal;
+  display: inline-block;
+  text-align: center;
+  border: 0px solid $footch-light-orange;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.invitation-party-name {
+color: $footch-light-orange;
+white-space: normal;
+}

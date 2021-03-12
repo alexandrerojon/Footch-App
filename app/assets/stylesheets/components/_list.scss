@@ -147,12 +147,14 @@
     background-color: white;
     display: inline-block;
     text-align: center;
+    a{
+      text-decoration: none;
+    color: $brand-pink;}
 
-       a{text-decoration: none;
-      color: $brand-pink;}
   &:hover{
-    a{text-decoration: none;
-      color: $brand-yellow;}
+    a{
+      text-decoration: none;
+    color: $brand-yellow;}
     }
   }
 
