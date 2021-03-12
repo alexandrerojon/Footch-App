@@ -1,18 +1,20 @@
 <% content_for :meta_title, "#{@party.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, "#{@party.name} on the #{@party.date}"  %>
 
-<div class="invitation">
+
   <% if @user_party.status == "pending"%>
-    <div class="pending-participants row justify-content-md-center">
-      <p><%= @party.user.username %> invited you to <%= @party.name %></p>
-      <div class="invite"> <%= simple_form_for [@party, @user_party], html: { class: 'form-inline' } do |f| %>
-        <%= f.input :status, input_html: { class: "box" }, label: false, collection: UserParty::STATUS %>
-        <%= f.submit "Submit", :class => "btn btn-get-recipes"%>
-        <% end %>
+    <div class="invitation">
+      <div class="pending-participants row justify-content-md-center">
+        <p><%= @party.user.username %> invited you to <%= @party.name %></p>
+        <div class="invite"> <%= simple_form_for [@party, @user_party], html: { class: 'form-inline' } do |f| %>
+          <%= f.input :status, input_html: { class: "box" }, label: false, collection: UserParty::STATUS %>
+          <%= f.submit "Submit", :class => "btn btn-get-recipes"%>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
-</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="card col-sm-12 col-lg-6" id="party-card">
@@ -123,47 +125,51 @@
   </div>
 
 
-      <div class="fucking-recipes">
+      <div class="partying-recipes">
         <% @party.party_recipes.each do |party_recipe| %>
-        <div class="class fucking-recipe">
+        <div class="partying-recipe">
           <% recipe = party_recipe.recipe %>
           <%= link_to recipe_path(recipe) do %>
               <div class="recipe_card">
               <div class="image_mini">
                 <%= image_tag recipe.image %>
               </div>
-              <div class="info-card container">
-                <div class="text-info">
-                  <div class="name row">
-                    <%= recipe.name.truncate(20) %>
+              <% end %>
+              <div class="info-card">
+                <%= link_to recipe_path(recipe) do %>
+                <div class="text-info text-truncate">
+                  <div class="name text-truncate">
+                    <%= recipe.name %>
                   </div>
-                  <div class="info row">
-                    <small>Preparation time:</small> <strong><%= recipe.min %> min. </strong>
+                  <div class="info">
+                    Preparation time: <span><%= recipe.min %> min. </span>
                   </div>
-                  <div class="info row">
-                    <small>Number of servings:</small> <strong><%= recipe.serving %>.prs</strong>
+                  <div class="info">
+                    Number of servings: <span><%= recipe.serving %>.prs</span>
                   </div>
-                  <div class="info row">
-                    <small>Diet:</small> <strong><%= recipe.diet.join(", ").truncate_words(5) %></strong>
+                  <div class="info">
+                    <div class="text-truncate">Diet:<span> <%= recipe.diet.join(", ") %></span> </div>
                   </div>
                 </div>
-                <div class="button_card row">
-                  <div class="vote_num col-3">
-                    <%= party_recipe.votes_for.size %>
+                <% end %>
+                <div class="button_card_party">
+                  <div class="btn-create" id="vote-btn">
+                    <span>votes: <strong><%= party_recipe.votes_for.size %></strong></span>
                   </div>
+
                   
-                    <div class="btn-create col-3" id="vote-recipe-<%= party_recipe.id %>">
+                    <div class="btn-create" id="vote-recipe-<%= party_recipe.id %>">
                     <%= link_to 'VOTE', voting_path(params:{id: party_recipe, voting: true}), method: :post, remote: true %>
                     </div>
-                 
+  
+                  <div class="btn-create">
 
-                  <div class="btn-create col-3">
                     <%= link_to "DELETE", party_recipe_path(party_recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
                   </div>
                 </div>
               </div>
             </div>
-          <% end %>
+
           </div>
           <% end %>
         </div>
