@@ -1,14 +1,29 @@
 <h1 class="h1"> Here you can find all your parties <%= current_user.username %> !</h1> 
+<div>
+    <button type="button" class="btn btn-create general-button"><%= link_to "Start party", new_party_path %>
+</div>
+<div class ="row">
+  <% current_user.parties.each do |party| %>
+    <div class ="col-lg-6 col-sm-12 col-md-6 ">
+      <%= link_to party_path(party) do %>
+        <div class="party-info-card">
+          <div class="party-name">
+            <%= party.name.capitalize %>
+          </div>
+          <hr>
+          <div class="party-date">
+            <span> Date of the event:</span> <%= party.date %>
+          </div>
+          <div class="party-count">
+            <span> Attending:</span> <%= party.user_parties.where(status: "attending").count %>
+          </div>
+          <div class="bring">
+           <span> Whats on the menu:</span> <%= party.party_ingredients.map { |ingredient| ingredient.name }.to_sentence%>.
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-<ul class ="list-group">
-    <% @parties.each do |element|  %>
-        <%= link_to party_path(element) do %>
-        <li class="list-group-item btn-create" id="create_party">
-        <%= element.name %>
-        <%= element.date %>
-        </li>
-        <% end %>
-    <% end %>
-</ul>
-<button type="button" class="btn btn-create general-button"><%= link_to "Start party", new_party_path %>
 
