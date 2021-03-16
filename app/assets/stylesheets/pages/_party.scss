@@ -2,10 +2,11 @@
 .card {
   padding: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  margin: 15px;
+  margin-bottom: 25px;
+  
 }
 
-#card-body{
+.card-body{
   width: 100%;
 }
 
@@ -107,26 +108,12 @@ h6 {
 }
 
 .partying-recipe {
-  // margin: 10px 15px;
+  margin: 10px 15px;
   display: flex;
-  // justify-content: center;
-
-
-  overflow: hidden;
-  width: 390px;
-  height: 100%;
-  background: white;
-  padding: 3px;
-  align-items: center;
-  border: 1px solid $footch-light-orange;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  font: $brand-font;
-  color: $footch-green;
-
-  // display: flex;
-  justify-content: flex-start;
-  margin: 5px;
+  justify-content: center;
 }
+
+
 
 hr {
   color: rgba(50,107,117,0.25);
@@ -176,3 +163,36 @@ border: 0;
 outline:none;
 }
 
+.button_card_party{
+  // display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 10px;
+
+
+  .btn-create{
+    font-size: 8px;
+    justify-content: space-evenly;
+    margin-right: 10px;
+  }
+
+}
+
+#vote-btn {
+ font-size: 12px;
+  background-color: white;
+  padding: 5px 5px;
+  color: $footch-teal;
+  display: inline-block;
+  text-align: center;
+  border: 0px solid $footch-light-orange;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.invitation-party-name {
+color: $footch-light-orange;
+white-space: normal;
+}

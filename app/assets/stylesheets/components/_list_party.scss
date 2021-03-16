@@ -1,13 +1,13 @@
 .list-parties-container {
-  flex-grow: 1;
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
+ 
   margin-bottom: 20px;
   // background-color: rgba(255,255,255,0.3);
   // border: 1px solid rgba(50,107,117,0.05);
 }
+.card-content{
 
+display: flex;
+}
 
 .list-parties {
   margin: 10px 15px;
