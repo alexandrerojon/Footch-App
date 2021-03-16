@@ -36,8 +36,10 @@
                   <% else %>
                   <% user_party.party_ingredients.each do |party_ingredient| %>
                   <span class="party-ingredient"><%= party_ingredient.name %></span>
+                  <% unless current_user.id != party_ingredient.user_party.id %>
                     <%= link_to party_ingredient_path(party_ingredient), method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
                     <i class="fas fa-times-circle"></i>
+                    <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
