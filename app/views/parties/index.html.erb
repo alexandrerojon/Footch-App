@@ -1,8 +1,8 @@
-<h1 class="h1"> Here you can find all your parties <%= current_user.username %> !</h1> 
+<h1 class="h1"> Here you can find all your parties <%= current_user.username %> !</h1>
 <div>
     <button type="button" class="btn btn-create general-button"><%= link_to "Start party", new_party_path %>
 </div>
-<div class ="row">
+<div class ="list-parties row">
   <% current_user.parties.each do |party| %>
     <div class ="col-lg-6 col-sm-12 col-md-6 ">
       <%= link_to party_path(party) do %>

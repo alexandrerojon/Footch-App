@@ -1,5 +1,5 @@
 .list-parties-container {
- 
+
   margin-bottom: 20px;
   // background-color: rgba(255,255,255,0.3);
   // border: 1px solid rgba(50,107,117,0.05);
@@ -10,13 +10,17 @@ display: flex;
 }
 
 .list-parties {
-  margin: 10px 15px;
-  display: flex;
-  justify-content: center;
+  // margin: 10px 15px;
+  // display: flex;
+  // justify-content: center;
 
-  a{text-decoration: none;}
+  a{
+    text-decoration: none;
+  }
    &:hover{
-    a{text-decoration: none;}
+    a{
+      text-decoration: none;
+    }
   }
 }
 
@@ -25,8 +29,8 @@ display: flex;
     padding: 10px;
     margin: 5px;
     color: $footch-teal;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    border: 1px solid $footch-light-orange;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    // border: 1px solid $footch-light-orange;
     width: 390px;
     // height: 170px;
     white-space: nowrap;
