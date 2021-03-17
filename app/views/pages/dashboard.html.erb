@@ -34,7 +34,7 @@
   <p> Created Parties </p>
 </div>
 <hr>
-<div class="row">
+<div class="list-parties row">
   <% current_user.created_parties. each do |party|%>
   <div class ="col-lg-6 col-sm-12 col-md-6 ">
     <%= link_to party_path(party) do %>
@@ -61,7 +61,7 @@
   <p> Joined Parties </p>
 </div>
 <hr>
-<div class ="row">
+<div class ="row list-parties">
   <% current_user.parties.each do |party| %>
     <div class ="col-lg-6 col-sm-12 col-md-6 ">
       <%= link_to party_path(party) do %>
