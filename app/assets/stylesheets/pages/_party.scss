@@ -3,7 +3,6 @@
   padding: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
   margin-bottom: 25px;
-  
 }
 
 .card-body{
@@ -12,8 +11,6 @@
 
 .user-display {
   margin-bottom: 40px;
-
-
 }
 
 .party-show {
@@ -99,13 +96,13 @@ h6 {
 .partying-recipes {
   flex-grow: 1;
   display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2px;
   margin-bottom: 20px;
 }
 
 .partying-recipe {
-  margin: 10px 15px;
+  margin: 5px 5px;
   display: flex;
   justify-content: center;
 }
@@ -136,7 +133,6 @@ hr {
   padding: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
   margin: 15px;
-
 }
 
 .pending-participants {
@@ -169,6 +165,7 @@ outline:none;
     font-size: 8px;
     justify-content: space-evenly;
     margin-right: 10px;
+    padding: 5px;
   }
 
 }
@@ -176,7 +173,7 @@ outline:none;
 #vote-btn {
  font-size: 12px;
   background-color: white;
-  padding: 5px 5px;
+  padding: 2px 2px;
   color: $footch-teal;
   display: inline-block;
   text-align: center;
