@@ -17,7 +17,7 @@
 }
 .recipe_card {
   overflow: hidden;
-  width: 390px;
+  width: 350px;
   height: 100%;
   background: white;
   margin: 5px;
@@ -72,6 +72,7 @@
     overflow: hidden;
     height: 150px;
     align-items: normal;
+    padding-top: 5px;
     a {
       text-decoration: none;
       // display: flex;
