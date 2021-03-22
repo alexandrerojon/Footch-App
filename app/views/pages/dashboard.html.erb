@@ -1,42 +1,45 @@
 <h1 class= "h1"> Dashboard of <%= current_user.username %></h1>
-<div class= "general-button">
-  <h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
-  <h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
+<div class="nav-dash">
+  <div class= "general-button">
+    <h3><button type="button" class="btn btn-create">  <%= link_to "Homepage", authenticated_root_path %></button></h3>
+    <h3><button type="button" class="btn btn-create">  <%= link_to "Start party", new_party_path %></button></h3>
+  </div>
+  <div class="dash-count">
+    <div class="created-count">
+      <div class="name-count">
+        Created:
+      </div>
+      <div class="num-count" >
+        <%= @recipes.count %>
+      </div>
+    </div>
+    <div class="cookbook-count">
+      <div class="name-count">
+        Cookbook:
+      </div>
+      <div class="num-count" >
+        <%= @cookbook.count %>
+      </div>
+    </div>
+    <div class="looked-count">
+      <div class="name-count">
+        Looked:
+      </div>
+      <div class="num-count" >
+        <%= @user_queries.count %>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="dash-count">
-  <div class="created-count">
-    <div class="name-count">
-      Created
-    </div>
-    <div class="num-count" >
-      <%= @recipes.count %>
-    </div>
-  </div>
-  <div class="cookbook-count">
-    <div class="name-count">
-      Cookbook
-    </div>
-    <div class="num-count" >
-      <%= @cookbook.count %>
-    </div>
-  </div>
-  <div class="looked-count">
-    <div class="name-count">
-      Looked
-    </div>
-    <div class="num-count" >
-      <%= @user_queries.count %>
-    </div>
-  </div>
-</div>
 <div class="title-dash">
   <p> Created Parties </p>
 </div>
 <hr>
 <div class="list-parties row">
   <% current_user.created_parties. each do |party|%>
-  <div class ="col-lg-6 col-sm-12 col-md-6 ">
+  <div class ="col-lg-4 col-sm-12 col-md-4 ">
     <%= link_to party_path(party) do %>
       <div class="party-info-card ">
         <div class="party-name">
@@ -63,7 +66,7 @@
 <hr>
 <div class ="row list-parties">
   <% current_user.parties.each do |party| %>
-    <div class ="col-lg-6 col-sm-12 col-md-6 ">
+    <div class ="col-lg-4 col-sm-12 col-md-4 ">
       <%= link_to party_path(party) do %>
         <div class="party-info-card">
           <div class="party-name">
