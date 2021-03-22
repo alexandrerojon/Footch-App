@@ -1,6 +1,7 @@
 .homepage-buttons {
   display: flex;
   justify-content: center;
+  align-items:center; // added to fix a bug, perhaps remove it if buttons aren't aligned
   padding: 10px;
   a{color: $footch-light-orange;}
   padding: 5px 10px;
