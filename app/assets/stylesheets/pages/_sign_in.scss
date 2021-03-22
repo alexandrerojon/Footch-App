@@ -1,0 +1,22 @@
+.sign-in {
+margin: 15px auto;
+border-radius: 5px;
+background-color: white;
+padding: 10px;
+}
+
+.btn-sign-in {
+     a{color: white;}
+    border: 3px solid;
+    border-color: $footch-teal;
+    background: $footch-teal;
+    transition: 1s;
+    opacity: 0.50 ;
+    margin-left: 0px;
+    padding: 0px;
+   }
+
+  .btn-sign-in:hover {
+      a{text-decoration:none;}
+      opacity: 1;
+  }
