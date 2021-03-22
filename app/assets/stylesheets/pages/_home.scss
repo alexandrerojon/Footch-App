@@ -8,3 +8,33 @@
   text-align: center;
 }
 
+.banner {
+  background-image: url("https://res.cloudinary.com/dvsuei0bc/image/upload/v1616421309/brooke-lark-wMzx2nBdeng-unsplash_dlxgdl.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin-top: 5px;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+.welcome{
+  margin-top: -8px;
+  background-color: white;
+}
+
+.welcome h2{
+ padding-top: 20px;
+
+}
+.welcome p{
+  text-align: center;
+  padding-bottom: 10px;
+ 
+ }
+
