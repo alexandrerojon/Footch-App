@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-lewagon" id="main-navbar">
+<div class="navbar navbar-expand-sm navbar-lewagon fixed-top" id="main-navbar">
 
     <% if user_signed_in? %>
       <div class="signed-in">
@@ -17,7 +17,6 @@
               <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
               <%= link_to "Find a recipe", root_path, class: "dropdown-item" %>
               <%= link_to "Cookbook", cookbooks_path, class: "dropdown-item" %>
-              <%= link_to "Parties", parties_path, class: "dropdown-item" %>
               <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
