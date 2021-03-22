@@ -20,9 +20,9 @@
         <% end %>
       </div>
     </div>
-    <div class="list">
+    <div class="list row">
       <%  @recipes.each do |recipe| %>
-        <div class="recipe_card">
+        <div class="recipe_card col-lg-6 col-md-6 col-sm-12">
           <%= link_to recipe_path(recipe) do %>
           <div class="image_mini">
             <%if recipe.picture.attached? %>
