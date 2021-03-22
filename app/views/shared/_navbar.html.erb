@@ -1,14 +1,14 @@
-<div class="navbar navbar-expand-sm navbar-lewagon" id="main-navbar">
+<div class="navbar navbar-expand-sm navbar-lewagon fixed-top" id="main-navbar">
 
     <% if user_signed_in? %>
       <div class="signed-in">
-        <div class="footch-talking">
+        <div class="footch-talking d-none d-md-block" id="si-navbar-one">
           <p>What's in your fridge,</p>
           <%= link_to dashboard_path do %>
           <p class="navbar-text"> <%= current_user.username.capitalize %> ?</p>
           <% end %>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" id="si-navbar-two">
           <%= link_to "Footch.", root_path, class: "dropdown-item", id: "logo" %>
           <i class="fas fa-utensils fa-5x" type="button" id="dropdownMenu2"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,7 +17,6 @@
               <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
               <%= link_to "Find a recipe", root_path, class: "dropdown-item" %>
               <%= link_to "Cookbook", cookbooks_path, class: "dropdown-item" %>
-              <%= link_to "Parties", parties_path, class: "dropdown-item" %>
               <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -26,10 +25,10 @@
 
     <% else %>
       <div class="not-signed-in">
-        <div>
+        <div id="nsi-navbar-one">
           <h4 class="navbar-text"><%= link_to "Login", new_user_session_path, class: "nav-link" %></h4>
         </div>
-        <div>
+        <div id="nsi-navbar-two">
           <i class="fas fa-utensils fa-5x"></i>
           <h4>Footch.</h4>
         </div>
