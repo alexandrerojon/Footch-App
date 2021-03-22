@@ -6,10 +6,29 @@
     background: $footch-teal;
     transition: 1s;
     opacity: 0.50 ;
+ 
 
   }
 
   .btn-log:hover {
+      a{text-decoration:none;}
+      opacity: 1;
+
+  }
+
+  .btn-try {
+      
+    a{color: white;}
+    border: 3px solid;
+    border-color: $footch-teal;
+    background: $footch-teal;
+    transition: 1s;
+    opacity: 0.50 ;
+    margin-left: 0px;
+    padding: 0px;
+   }
+
+  .btn-try:hover {
       a{text-decoration:none;}
       opacity: 1;
 
