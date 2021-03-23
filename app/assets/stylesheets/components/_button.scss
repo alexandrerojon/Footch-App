@@ -13,9 +13,16 @@
 }
 
 .btn {
-  margin: 10px;
+  margin: 0px;
+  margin-right: 5px;
+  color:white;
 }
 
+.btn:hover {
+  margin: 0px;
+  margin-right: 5px;
+  color:white;
+}
 .btn-my-parties {
    a{color: $footch-light-orange;}
     padding: 5px 10px;
