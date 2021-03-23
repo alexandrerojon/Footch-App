@@ -1,9 +1,10 @@
 
 .h1 {
-  background-color: $footch-light-orange;
+  
   text-align: center;
-  height: 100px;
-  padding: 10px;
+  font-weight: 900;
+  font-size: 80px;
+  color: $footch-teal;
   font-family: $brand-font-bold;
   display: flex;
   align-items: center;

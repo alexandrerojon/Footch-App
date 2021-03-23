@@ -17,3 +17,11 @@
 @import "pages/recipe";
 
 @import 'select2/dist/css/select2';
+
+
+.background-image {
+    background-image: linear-gradient(0.9turn, rgba(0.25, 0, 0, 0.25), rgba(0, 0, 0, 0)),
+    url("https://res.cloudinary.com/dvsuei0bc/image/upload/v1616421309/brooke-lark-wMzx2nBdeng-unsplash_dlxgdl.jpg");
+    background-size: cover;
+    background-position: center;
+    }
