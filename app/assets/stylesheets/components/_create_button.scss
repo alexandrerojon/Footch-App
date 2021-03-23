@@ -3,12 +3,13 @@
       display: flex;
       align-items: center;
       }
-    padding: 5px 10px;
-    border: 1px solid;
+    padding: 10px 15px;
+    border: 2px solid;
     border-color: $footch-light-orange;
-    background: white;
+    background: rgba(255,255,255,0.05);
     transition: 0.5s;
     font-family: $brand-font;
+    font-weight: 900;
     display: flex;
     align-items: center;
 
@@ -22,7 +23,8 @@
     }
     background: $footch-light-orange;
     font-family: $brand-font;
-    border: 0px;
+    border: 2px solid;
+    border-color: $footch-light-orange;
   }
 
   .btn-add {
@@ -59,14 +61,14 @@
 
 
   }
-  
+
   #find-button{
     padding: 5px 10px;
     margin-top: 10px;
     margin-right: 10px;
 
   }
- 
+
   #create_party {
     color: $footch-light-orange;
     margin: 5px;
