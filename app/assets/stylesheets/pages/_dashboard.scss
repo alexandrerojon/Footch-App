@@ -9,7 +9,7 @@
 
 .dash-count {
   display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: center;
   box-sizing: border-box;
   margin: 10px;
@@ -32,6 +32,7 @@
   // flex-direction: column;
   align-items: baseline;
   margin: 15px;
+  justify-content: center;
 }
 
 .cookbook-count {
@@ -39,6 +40,7 @@
   // flex-direction: column;
   align-items: baseline;
   margin: 15px;
+  justify-content: center;
 }
 
 .looked-count {
@@ -46,6 +48,13 @@
   // flex-direction: column;
   align-items: baseline;
   margin: 15px;
+  justify-content: center;
+}
+
+.title-dash {
+  p {
+    margin-top: 2rem;
+  }
 }
 
 hr{ border-top: 1px solid rgba(50,107,117,0.25)}
