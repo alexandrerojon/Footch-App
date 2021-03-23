@@ -2,10 +2,20 @@
 
 .recipe-informations{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
 }
 
+.recipe-div {
+  width: 50%;
+}
+
+
+.list-group-item-light {
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+}
 
 .ingredients-listings {
   width: 100%;
