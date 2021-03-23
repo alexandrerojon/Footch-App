@@ -37,14 +37,15 @@
   </head>
 
   <body>
+    <div class="background-image">
+      <%= render './shared/navbar' %>
+      <%= render './shared/flashes' %>
 
-    <%= render './shared/navbar' %>
-    <%= render './shared/flashes' %>
+      <div class="main-div container">
 
-    <div class="main-div container">
+      <%= yield %>
 
-    <%= yield %>
-
+      </div>
     </div>
 
     <%= render './shared/footer' %>
