@@ -9,17 +9,20 @@
     </div>
     <br>
 
-    <div class="image_large">
-      <% if @recipe.picture.attached? %>
-        <%= cl_image_tag @recipe.picture.key %>
-      <% else %>
-        <%= image_tag @recipe.image %>
-      <% end %>
-    </div>
+    
 
   <div class="recipe-show-page">
+    
+
     <div class="recipe-informations">
-      <div class="ingredients-listings">
+      <div class="image_large recipe-div">
+        <% if @recipe.picture.attached? %>
+          <%= cl_image_tag @recipe.picture.key %>
+        <% else %>
+          <%= image_tag @recipe.image %>
+        <% end %>
+      </div>
+      <div class="recipe-div">
         <h3>Information</h3>
         <ul>
           <li class="list-group-item list-group-item-light"><strong>Serving :  </strong><%=@recipe.serving%> </li>
@@ -33,8 +36,11 @@
             <% end %>
         </ul>
       </div>
+    </div>
 
-      <div class="ingredients-listings">
+
+    <div class="recipe-informations">
+      <div class="recipe-div">
         <h3>Ingredients</h3>
         <ul>
           <% @recipe.ingredients_list.each do |ingredient| %>
@@ -42,20 +48,20 @@
           <% end %>
         </ul>
       </div>
-    </div>
 
-
-
-    <div>
-      <h3>Instructions</h3>
-      <ol>
-        <% @recipe.steps.each do |step| %>
-        <li><%= step %></li>
+      <div class="instructions-listings recipe-div">
+        <h3>Instructions</h3>
+        <ol>
+          <% @recipe.steps.each do |step| %>
+          <li class="list-group-item list-group-item-light"><%= step %></li>
+          <% end %>
+        </ol>
+        <% if params[:user_query_id].present? %>
+         <button type="button" class="btn btn-create"><%= link_to'back to all recipes', user_query_path(params[:user_query_id]) %></button>
         <% end %>
-      </ol>
-      <% if params[:user_query_id].present? %>
-       <button type="button" class="btn btn-create"><%= link_to'back to all recipes', user_query_path(params[:user_query_id]) %></button>
-      <% end %>
+      </div>
     </div>
+
+
   </div>
 </div>
