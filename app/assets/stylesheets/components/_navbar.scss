@@ -62,11 +62,12 @@
 #logo {
   color: $footch-dark-orange;
   font-size: 40px;
-  &:hover{
-    background-color: $footch-teal;
-  a{text-decoration:none;}
-  }
+    &:hover{
+    background-color: transparent;
+    text-decoration:none;
+   }
 }
+
 
 #dropdownMenu2 {
   font-size: 40px;

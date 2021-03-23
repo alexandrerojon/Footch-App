@@ -1,12 +1,12 @@
 .btn-create {
-    a{color: $footch-light-orange;
+    a{color: white;
       display: flex;
       align-items: center;
       }
     padding: 10px 15px;
     border: 2px solid;
     border-color: $footch-light-orange;
-    background: rgba(255,255,255,0.05);
+    background: $footch-light-orange;
     transition: 0.5s;
     font-family: $brand-font;
     font-weight: 900;
@@ -21,7 +21,7 @@
       display: flex;
       align-items: center;
     }
-    background: $footch-light-orange;
+    background: $footch-dark-orange;
     font-family: $brand-font;
     border: 2px solid;
     border-color: $footch-light-orange;
