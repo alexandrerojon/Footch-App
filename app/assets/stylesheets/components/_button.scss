@@ -37,3 +37,30 @@
   }
 }
 
+.btn-recipe {
+  a{color: white;
+    display: flex;
+    align-items: center;
+    }
+  margin:10px;
+  padding: 6px 15px;
+  border: 0px;
+  background: $footch-light-orange;
+  transition: 0.5s;
+  font-family: $brand-font;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+&:hover {
+  a{color: white;
+     text-decoration:none;
+    display: flex;
+    align-items: center;
+    }
+    border:0px;
+    background: $footch-dark-orange;
+    font-family: $brand-font;
+  } 
+
+}
+
