@@ -4,7 +4,7 @@
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 8px;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .party_recipes_list {
@@ -158,4 +158,37 @@
     }
   }
 
+  #filter {
+    float: none;
+    text-align : center;
+    align-items: center;
+  }
 
+  #search-button {
+    position: relative;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+.btn-diet {
+  color: white;
+  padding: 3px 10px;
+  border: 3px solid;
+  border-radius: 3px;
+  border-color: $footch-teal;
+  background: $footch-teal;
+  transition: 1s;
+  opacity: 0.8;
+  margin-bottom: 10px;
+
+&:hover {
+   a{text-decoration:none;}
+      opacity: 1;
+  }
+}
+
+label {
+  color: black;
+  font-size: 20px;
+}
