@@ -4,10 +4,10 @@
   <% if @user_query.nil?  %>
     <h3> Our apologies! It seems there are no recipes with those ingredients...</h3>
   <% else %>
-    <div class="d-flex justify-content-center">
+    <div id= "filter" class="d-flex justify-content-center">
       <%= simple_form_for(:filter, url: user_query_path(@user_query), method: :get) do |f| %>
-        <%= f.input :diet, label: " Choose your diet below ".html_safe, required: false, as: :select, collection: Recipe.diets(@user_query), input_html: { class: "select2" }%>
-        <%= f.submit "Select diet", class: "btn btn-create", id: "search-button" %>
+        <%= f.input :diet, label: "Choose your diet below".html_safe, required: false, as: :select, collection: Recipe.diets(@user_query), input_html: { class: "select2" }%>
+        <%= f.submit "Select diet", class: "btn-diet"%>
         <% end %>
     </div>
   <% end %>
