@@ -61,7 +61,7 @@
 
 #logo {
   color: $footch-dark-orange;
-  font-size: 40px;
+  font-size: 30px;
     &:hover{
     background-color: transparent;
     text-decoration:none;
@@ -107,9 +107,6 @@
   flex-shrink: 3;
 }
 
-#logo {
-  font-size: 30px;
-}
 
 #si-navbar-one {
   flex-shrink: 1;
