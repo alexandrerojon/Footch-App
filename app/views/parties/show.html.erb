@@ -53,6 +53,7 @@
             <h6 class="card-title"><strong><u>Tell us what ingredients you're bringing below:</u></strong></h6>
             <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
               <%= f.input :name, label: false %>
+              <div class="btn-party-ingredient">
               <%= f.submit "Add ingredient", class: "btn btn-add" %>
               <% if check_authorized_user(@party, current_user) %>
               <button type="button" class="btn btn-delete"><%= link_to "Get recipes", party_party_recipes_path(@party), method: :post %>
@@ -60,6 +61,7 @@
               <% if check_authorized_user(@party, current_user) %>
                 <button type="button" class="btn btn-delete"> <%= link_to 'Delete party', party_path(@party), method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
+              </div>
             <% end %>
           </div>
         <% end %>
@@ -82,7 +84,6 @@
         </div>
         <div class="user-display">
           <div class="user-status" id="attending">
-            <div class="user-status">
               <h6>Attending</h6>
             <% @party.user_parties.each do |user_party| %>
               <p><%= user_party.user.username if user_party.status == "attending"%></p>
@@ -94,7 +95,7 @@
               <p><%= user_party.user.username if user_party.status == "not attending"%></p>
             <% end %>
           </div>
-          <div class="user-status">
+          <div class="user-status" id="pending">
             <h6>Pending</h6>
             <% @party.user_parties.each do |user_party| %>
               <p><%= user_party.user.username if user_party.status == "pending"%></p>
@@ -102,12 +103,11 @@
             </div>
           </div>
         </div>
-      </div>
   </div>
 </div>
 
 <div class="row">
-    <div class="card col-sm-11 col-lg-12" id="chatbox-card">
+    <div class="card col-sm-12 col-lg-12" id="chatbox-card">
       <div class="chatbox">
         <div id="messages" data-party-id="<%= @party.id %>">
           <% @party.messages.each do |message| %>
