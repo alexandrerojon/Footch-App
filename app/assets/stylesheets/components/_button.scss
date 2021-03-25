@@ -9,6 +9,11 @@
   font-family: $brand-font;
 }
 
+#homepage-btn {
+  background-color: transparent;
+  padding-bottom: 20px;
+}
+
 .btn {
   margin: 0px;
   margin-right: 5px;
@@ -60,7 +65,7 @@
     border:0px;
     background: $footch-dark-orange;
     font-family: $brand-font;
-  } 
+  }
 
 }
 
