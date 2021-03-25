@@ -16,7 +16,7 @@
   <% end %>
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" id="party-top-divs">
     <div class="card col-sm-12 col-lg-6" id="party-card">
       <div class="party-show">
         <h1><%= @party.name %></h1>
@@ -82,7 +82,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="user-display">
+        <div class="user-display scroll">
           <div class="user-status" id="attending">
               <h6>Attending</h6>
             <% @party.user_parties.each do |user_party| %>
