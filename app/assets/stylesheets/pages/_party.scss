@@ -15,8 +15,16 @@
   margin: 20px;
 }
 
+#party-top-divs {
+  display: flex;
+}
+
 #card-friends {
-  margin-left: 47px;
+  margin: 20px
+}
+
+#party-card {
+  margin: 20px
 }
 
 .user-add {
@@ -160,22 +168,28 @@ hr {
   margin-top: 15px;
 }
 
+.message-container  > p {
+  color: $footch-teal;
+}
+
 .box {
 border: 0;
 outline:none;
 }
 
-.button_card_party{
+.button_card_party {
   // display: flex;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
 
-  .btn-create{
+
+  .btn-create {
     font-size: 8px;
     justify-content: space-evenly;
     margin-right: 10px;
     padding: 2px;
+    height: 40px;
   }
 
 }
