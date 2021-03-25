@@ -11,10 +11,6 @@
   width: 100%;
 }
 
-.user-display {
-  margin-bottom: 40px;
-}
-
 .party-show {
   margin: 20px;
 }
@@ -44,11 +40,18 @@
   padding: 20px;
 }
 
-
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
 .user-display {
-  display: flex;
-  justify-content: space-around;
-  align-items: stretch;
+  flex-grow: 1;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 2px;
 }
 
 .user-status {
@@ -100,7 +103,7 @@ h6 {
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 2px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .partying-recipe {
@@ -111,6 +114,12 @@ h6 {
 
 hr {
   color: rgba(50,107,117,0.25)
+}
+
+.btn-party-ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 5px 10px;
 }
 
 
@@ -160,14 +169,13 @@ outline:none;
   // display: flex;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 10px;
 
 
   .btn-create{
     font-size: 8px;
     justify-content: space-evenly;
     margin-right: 10px;
-    padding: 5px;
+    padding: 2px;
   }
 
 }
