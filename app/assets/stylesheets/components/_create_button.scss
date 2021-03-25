@@ -69,13 +69,15 @@
   }
 
   #create_party {
-    color: $footch-light-orange;
+    color: white;
+    background-color: $footch-light-orange;
     margin: 5px;
 
 
     &:hover{
+      background-color: $footch-dark-orange;
       color: white;
-      a{text-decoration: red;}
+      a{text-decoration: none;}
     }
   }
 
