@@ -8,7 +8,7 @@ const initSelect2 = () => {
   $('.select2').select2({multiple: true, tags: true, width: "100%", placeholder: "Add here!"});
   }
   else {
-    $('.select2').select2({width: "100%", placeholder: "Add here!"});
+    $('.select2').select2({width: "100%", placeholder: "Add your diet here!"});
   }
 };
 
