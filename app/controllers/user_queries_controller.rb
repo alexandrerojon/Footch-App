@@ -1,5 +1,3 @@
-require "pry-byebug"
-
 class UserQueriesController < ApplicationController
 
   def new
