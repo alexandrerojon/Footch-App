@@ -1,10 +1,10 @@
 
 <h1 class= "banner-recipe">Create your party!</h1>
+<div class="start-party-card">
+  <%= simple_form_for(@party) do |f| %>
 
-<%= simple_form_for(@party) do |f| %>
-
-<%= f.input :name, placeholder: "What's the name of the groupe" %>
-<%= f.input :date, html5: true, placeholder: "What's the date of the party" %>
-<%= f.button :submit, "Start party", :class => "btn btn-create", :id => "create_party" %> </button>
-<% end %>
-
+  <%= f.input :name, placeholder: "What's the name of the groupe" %>
+  <%= f.input :date, html5: true, placeholder: "What's the date of the party" %>
+  <%= f.button :submit, "Start party", :class => "btn btn-create", :id => "create_party" %> </button>
+  <% end %>
+</div>
