@@ -3,8 +3,8 @@
 
 <%= simple_form_for(@party) do |f| %>
 
-<%= f.input :name, placeholder: "What's the name of the groupe" %>
-<%= f.input :date, html5: true, placeholder: "What's the date of the party" %>
+<%= f.input :name, placeholder: "Name of the party" %>
+<%= f.input :date, html5: true, placeholder: "Date of the party" %>
 <%= f.button :submit, "Start party", :class => "btn btn-create", :id => "create_party" %> </button>
 <% end %>
 
