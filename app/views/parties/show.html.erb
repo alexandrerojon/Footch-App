@@ -24,7 +24,7 @@
         <p> by: <span class="party-creator"><%= link_to @party.user.username, dashboard_path(@party.user) %></span></p>
       </div>
       <div class="ingredients-per-user">
-        <h6><strong><u>Who is bringing what?:</u></strong></h6>
+        <h6><strong>Who is bringing what?:</strong></h6>
         <div class="scroll">
           <% @party.user_parties.each do |user_party| %>
             <% next if user_party.status == "not attending" %>
@@ -50,7 +50,8 @@
         </div>
         <% if @user_party.status == "attending" %>
           <div class="form">
-            <h6 class="card-title"><strong><u>Tell us what ingredients you're bringing below:</u></strong></h6>
+            
+            <h6 class="card-title"><strong>Tell us what ingredients you're bringing below:</strong></h6>
             <%= simple_form_for [@user_party, @party_ingredient], remote: true do |f| %>
               <%= f.input :name, label: false %>
               <div class="btn-party-ingredient">
