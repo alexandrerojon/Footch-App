@@ -1,3 +1,5 @@
+require "pry-byebug"
+
 class UserQueriesController < ApplicationController
 
   def new
@@ -46,7 +48,8 @@ class UserQueriesController < ApplicationController
     @user_query = UserQuery.find(params[:id])
     @recipes = @user_query.recipes
     if params[:filter].present?
-      @recipes = @recipes.select{ |recipe| recipe.diet.include?(params[:filter][:diet]) }
+      @recipes = @recipes.select { |recipe| recipe.diet.include?(params[:filter][:diet]) }
+      @user_query.recipes = @recipes
     end
   end
 
